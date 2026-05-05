@@ -1,0 +1,9 @@
+{
+  "name": "motis-leadflow",
+  "version": "1.0.0",
+  "description": "Motis LeadFlow MVP",
+  "main": "index.js",
+  "dependencies": {
+    "@netlify/blobs": "^7.3.0"
+  }
+}
