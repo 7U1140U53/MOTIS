@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html class="scroll-smooth dark" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Motis Industries | Where Perfection Is Not Enough</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Motis Industries | Where Perfection Is Not Enough</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -35,436 +39,638 @@
                 }
             }
         }
-</script>
-<style>
-    .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
-    
-    /* Antigravity Animation Delays */
-    .delay-100 { animation-delay: 100ms !important; }
-    .delay-200 { animation-delay: 200ms !important; }
-    .delay-300 { animation-delay: 300ms !important; }
-    .delay-400 { animation-delay: 400ms !important; }
-    .delay-500 { animation-delay: 500ms !important; }
-    .delay-600 { animation-delay: 600ms !important; }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #0B0F19; }
-    ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #F97316; }
-
-    /* Antigravity 3D Tilt & Glow Cards */
-    .product-card {
-        transition: transform 0.1s ease, border-color 0.3s ease, background 0.3s ease;
-        transform-style: preserve-3d;
-        position: relative;
-        overflow: hidden;
-    }
-    .product-card::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(800px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), rgba(249,115,22,0.12), transparent 40%);
-        z-index: 0;
-        pointer-events: none;
-        transition: background 0.3s ease, opacity 0.3s ease;
-        opacity: 0;
-    }
-    .product-card:hover::before { opacity: 1; }
-    .product-card > * {
-        position: relative;
-        z-index: 1;
-        transform: translateZ(30px);
-    }
-    
-    /* Buttery Smooth Reveal on Scroll (Antigravity Curve) */
-    .reveal-on-scroll {
-        opacity: 0;
-        transform: translateY(60px) scale(0.98);
-        transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
-        will-change: opacity, transform;
-    }
-    .reveal-visible {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-    /* 999x Alive Background & Icons */
-    @keyframes floatOrb {
-        0% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-        33% { transform: translate(40px, -60px) scale(1.1); opacity: 0.6; }
-        66% { transform: translate(-30px, 30px) scale(0.9); opacity: 0.4; }
-        100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-    }
-    .orb-1 { animation: floatOrb 12s ease-in-out infinite; }
-    .orb-2 { animation: floatOrb 16s ease-in-out infinite reverse; }
-    
-    @keyframes spin-slow { 100% { transform: rotate(360deg); } }
-    @keyframes pulse-glow { 0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 8px rgba(249,115,22,0.6)); } 50% { opacity: 0.7; transform: scale(0.95); filter: drop-shadow(0 0 2px rgba(249,115,22,0.2)); } }
-    
-    .icon-spin { animation: spin-slow 15s linear infinite; transform-origin: center; }
-    .icon-pulse { animation: pulse-glow 3s ease-in-out infinite; }
-</style>
-</head>
-<body class="bg-motis-dark text-motis-light antialiased font-sans overflow-x-hidden selection:bg-motis-orange selection:text-white">
-
-<!-- Top Navigation -->
-<nav class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-lg bg-motis-dark/80 border-b border-white/5 h-[80px] flex justify-between items-center px-8 md:px-16 max-w-[1600px] mx-auto left-0 right-0 reveal-on-scroll reveal-visible">
-    <div class="text-2xl font-black tracking-widest text-white uppercase font-heading flex items-center">
-        <span class="text-motis-orange mr-2">/</span> MOTIS
-    </div>
-    
-    <ul class="hidden md:flex space-x-10 items-center h-full text-sm font-medium tracking-wide text-slate-300">
-        <li><a class="hover:text-white transition-colors" href="#">Home</a></li>
-        <li><a class="hover:text-white transition-colors" href="#product-lines">Solutions</a></li>
-        <li><a class="hover:text-white transition-colors" href="#more-paint">More Paint</a></li>
-        <li><a class="hover:text-white transition-colors" href="#quote">Quote</a></li>
-    </ul>
-
-    <div class="flex items-center space-x-6">
-        <a href="admin/admin_dark.html" class="hidden md:block text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Admin</a>
-        <a href="#quote" class="bg-motis-orange text-white px-6 py-2.5 rounded-sm hover:bg-motis-orange-hover transition-colors font-medium text-sm tracking-wide shadow-lg hover:shadow-motis-orange/30 inline-block">
-            Initiate Request
-        </a>
-    </div>
-</nav>
-
-<!-- Redesigned Hero Section -->
-<header class="relative w-full min-h-screen flex items-center pt-[80px] overflow-hidden">
-    <!-- Parallax Background Image -->
-    <div class="absolute inset-0 z-0 parallax-bg" data-speed="0.4">
-        <img alt="Modern Industrial Facility" class="w-full h-full object-cover opacity-20 mix-blend-luminosity grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxi5gleaFzsoGHVJ8LZZU2jRJ6jT8eMAr4LIWHfyUlSkGX-xlQ1_nQbu7rdGL2Cfk0pT3vkj0Cleh7yOvkTjheeJsVCiXMr_cG9MbzKEgsCT7qlNbkyFwOUZyyvxOQzZawgsN2a0WVlozoQ-IaXYN1JNZtiWGHrS1BYHBRC6lWGUJUV2fvdFt2ekuyDrNdp6nNtUzraKKYncP-QMx8b8lVSdBd8VNQl92l4_HLUKS1lEebmZ2H_4kIDTB5yfWW77fTEOrhQNFv4"/>
-        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-motis-dark/40 via-motis-dark/90 to-motis-dark"></div>
-    </div>
-
-    <!-- Glowing Orbs (Alive Background) -->
-    <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-motis-orange/20 rounded-full blur-[120px] pointer-events-none parallax-bg orb-1" data-speed="0.1"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none parallax-bg orb-2" data-speed="0.2"></div>
-
-    <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 flex flex-col justify-center">
-        <div class="max-w-4xl">
-            
-            <div class="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-8 text-slate-300 reveal-on-scroll reveal-visible delay-100">
-                <span class="relative flex h-3 w-3">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-motis-orange opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-motis-orange"></span>
-                </span>
-                <span class="text-xs uppercase tracking-[0.2em] font-semibold text-white">Motis Industries Limited</span>
-            </div>
-            
-            <h1 class="font-heading text-6xl md:text-[5.5rem] text-white font-black leading-[1.05] tracking-tight mb-8 reveal-on-scroll reveal-visible delay-200">
-                Where <span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">Perfection</span><br/>
-                Is Not <span class="text-motis-orange">Enough.</span>
-            </h1>
-            
-            <p class="text-lg md:text-2xl text-slate-400 font-light max-w-2xl leading-relaxed mb-12 reveal-on-scroll reveal-visible delay-300">
-                Delivering uncompromising chemical, coating, and industrial solutions. Engineered to exceed the highest standards of modern infrastructure.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-5 reveal-on-scroll reveal-visible delay-400">
-                <a href="#quote" class="bg-motis-orange text-white font-medium text-lg px-10 py-4 rounded-sm hover:bg-motis-orange-hover transition-all flex items-center justify-center space-x-2 animate-glow">
-                    <span>Deploy Quote Request</span>
-                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </a>
-                <a href="#product-lines" class="bg-transparent border border-slate-600 text-white font-medium text-lg px-10 py-4 rounded-sm hover:bg-white/5 transition-all flex items-center justify-center">
-                    Explore Capabilities
-                </a>
-            </div>
-            
-        </div>
-    </div>
-</header>
-
-<!-- Product Lines Section -->
-<section class="py-32 bg-motis-slate relative z-20" id="product-lines">
-    <div class="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)]" style="background-size: 40px 40px;"></div>
-    
-    <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
-        <div class="text-center max-w-3xl mx-auto mb-20">
-            <h2 class="font-heading text-4xl md:text-5xl text-white font-bold mb-6 tracking-tight reveal-on-scroll">Industrial Grade Solutions</h2>
-            <p class="text-lg text-slate-400 font-light leading-relaxed reveal-on-scroll delay-100">
-                Engineered for maximum endurance. We support enterprise infrastructure, manufacturing, and commercial development with unyielding chemical solutions.
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <path d="M12 3L2 8L12 13L22 8L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M2 13L12 18L22 13" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M2 18L12 23L22 18" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Paints & Decorative</h3>
-                <p class="text-slate-400 font-light leading-relaxed">Advanced architectural surface protection. More Paint delivers enduring color fidelity and superior environmental resilience.</p>
-            </div>
-            <!-- Card 2 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4"/>
-                        <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Industrial Coatings</h3>
-                <p class="text-slate-400 font-light leading-relaxed">High-performance barrier systems. Engineered to shield heavy infrastructure and facilities from extreme chemical and atmospheric stress.</p>
-            </div>
-            <!-- Card 3 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse" style="animation-delay: -1.5s;">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <path d="M3 21H21L12 3L3 21Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M9 15L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Construction Chemicals</h3>
-                <p class="text-slate-400 font-light leading-relaxed">Structural enhancement compounds. Advanced waterproofing, curing, and bonding agents that reinforce foundational integrity.</p>
-            </div>
-            <!-- Card 4 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Hygiene Chemicals</h3>
-                <p class="text-slate-400 font-light leading-relaxed">Enterprise-grade sanitation solutions. Precision-formulated to maintain absolute sterilization in commercial and industrial environments.</p>
-            </div>
-            <!-- Card 5 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin" style="animation-duration: 20s; animation-direction: reverse;">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M3 9H21" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M9 21V9" stroke="currentColor" stroke-width="1.5"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Adhesives & Sealants</h3>
-                <p class="text-slate-400 font-light leading-relaxed">High-tensile industrial bonding. Delivering unyielding structural fusion for extreme manufacturing and assembly applications.</p>
-            </div>
-            <!-- Card 6 -->
-            <div class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
-                <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse" style="animation-delay: -2s;">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full text-motis-orange">
-                        <path d="M12 4L4 8L12 12L20 8L12 4Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M4 16L12 20L20 16" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                        <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-                <h3 class="font-heading text-2xl text-white mb-4">Specialty Solutions</h3>
-                <p class="text-slate-400 font-light leading-relaxed">Custom formulation engineering. Bespoke chemical solutions rigorously developed to meet exact architectural and industrial specifications.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Featured Brand Section (AI Image) -->
-<section class="py-32 bg-motis-dark border-t border-white/5 relative z-20" id="more-paint">
-    <div class="max-w-[1400px] mx-auto px-8 md:px-16">
-        <div class="flex flex-col lg:flex-row items-center gap-20">
-            <div class="w-full lg:w-1/2 relative reveal-on-scroll">
-                <div class="absolute inset-0 bg-motis-orange/20 blur-[100px] rounded-full"></div>
-                <!-- Replaced with the stunning hyper-realistic AI paint image -->
-                <div class="relative rounded-sm overflow-hidden border border-white/10 aspect-[4/3] bg-motis-slate shadow-2xl">
-                    <img alt="Premium More Paint Macro Shot" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000" src="file:///C:/Users/Owner/.gemini/antigravity/brain/db009ad6-62c4-47a0-b2df-fb3fb1b146f5/more_paint_premium_hero_1777844499966.png"/>
-                    <div class="absolute inset-0 bg-gradient-to-t from-motis-dark via-transparent to-transparent opacity-90 z-10 pointer-events-none"></div>
-                </div>
-            </div>
-            
-            <div class="w-full lg:w-1/2">
-                <div class="inline-flex items-center space-x-2 bg-motis-orange/10 border border-motis-orange/20 px-4 py-1.5 rounded-sm mb-8 text-motis-orange reveal-on-scroll delay-100">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                    </svg>
-                    <span class="text-xs uppercase tracking-[0.2em] font-semibold">Flagship Brand</span>
-                </div>
-                <h2 class="font-heading text-4xl md:text-6xl text-white font-black mb-8 tracking-tight reveal-on-scroll delay-200">Engineered to Endure.</h2>
-                <p class="text-xl text-slate-400 font-light mb-10 leading-relaxed reveal-on-scroll delay-300">
-                    More Paint isn't just color—it is an impenetrable architectural barrier. Designed for uncompromising commercial durability and residential elegance, our flagship line is weather-responsive and structurally resilient.
-                </p>
-                <ul class="space-y-6 mb-12">
-                    <li class="flex items-center reveal-on-scroll delay-400">
-                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">✓</div>
-                        <span class="text-slate-300 font-medium tracking-wide">Extreme weather-responsive exterior matrix</span>
-                    </li>
-                    <li class="flex items-center reveal-on-scroll delay-500">
-                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">✓</div>
-                        <span class="text-slate-300 font-medium tracking-wide">Commercial-grade interior abrasion resistance</span>
-                    </li>
-                    <li class="flex items-center reveal-on-scroll delay-600">
-                        <div class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">✓</div>
-                        <span class="text-slate-300 font-medium tracking-wide">High-volume deployment for contractors</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Quote Request Section -->
-<section class="py-32 bg-motis-slate relative z-20" id="quote">
-    <!-- Diagonal separator -->
-    <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
-        <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" preserveAspectRatio="none" viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg">
-            <path class="fill-motis-dark" d="M1200 120L0 16.48V0h1200v120z"></path>
-        </svg>
-    </div>
-
-    <div class="max-w-5xl mx-auto px-8 md:px-16 relative z-10 pt-10">
-        <div class="bg-motis-dark/80 backdrop-blur-xl border border-white/10 rounded-sm shadow-2xl p-10 md:p-16 reveal-on-scroll">
-            <div class="text-center mb-12">
-                <h2 class="font-heading text-4xl text-white font-bold mb-4 tracking-tight reveal-on-scroll delay-100">Initiate Supply Protocol</h2>
-                <p class="text-slate-400 text-lg font-light reveal-on-scroll delay-200">
-                    Submit your architectural or industrial specifications. Our execution team will deploy a quote and availability timeline directly to your inbox.
-                </p>
-            </div>
-            
-            <form class="space-y-8" action="/.netlify/functions/captureLead" method="POST">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="reveal-on-scroll delay-100">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Full Name *</label>
-                        <input class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" placeholder="e.g. John Doe" required name="name" type="text"/>
-                    </div>
-                    <div class="reveal-on-scroll delay-200">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Contact Number *</label>
-                        <input class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" placeholder="+234..." required name="phone" type="tel"/>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="reveal-on-scroll delay-300">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Email Address</label>
-                        <input class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" placeholder="john@company.com" name="email" type="email"/>
-                    </div>
-                    <div class="reveal-on-scroll delay-400">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Deployment Location *</label>
-                        <input class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" placeholder="City, State" required name="location" type="text"/>
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="reveal-on-scroll delay-500">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Requirement Type *</label>
-                        <select class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" required name="product_line">
-                            <option disabled selected value="">Select protocol...</option>
-                            <option value="paints">More Paint / Architectural</option>
-                            <option value="industrial">Heavy Industrial Coatings</option>
-                            <option value="construction">Structural Construction Chemicals</option>
-                            <option value="cleaning">Enterprise Hygiene Solutions</option>
-                            <option value="adhesives">High-Tensile Adhesives & Sealants</option>
-                            <option value="specialty">Custom Formulation</option>
-                        </select>
-                    </div>
-                    <div class="reveal-on-scroll delay-600">
-                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Volume Specification</label>
-                        <input class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors" placeholder="e.g. 50 Drums" name="quantity" type="text"/>
-                    </div>
-                </div>
-                
-                <div class="reveal-on-scroll delay-200">
-                    <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Project Specifications *</label>
-                    <textarea class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors resize-none" placeholder="Detail your specific architectural or industrial requirements..." required name="message" rows="5"></textarea>
-                </div>
-                
-                <div class="pt-4 reveal-on-scroll delay-300">
-                    <button class="w-full bg-motis-orange text-white font-medium text-lg px-8 py-5 rounded-sm hover:bg-motis-orange-hover transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-motis-orange/20" type="submit">
-                        <span>Execute Request</span>
-                        <span class="material-symbols-outlined">send</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
-
-<!-- Footer -->
-<footer class="bg-motis-dark border-t border-white/5 py-16 px-8 md:px-16 relative z-20">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center reveal-on-scroll">
-        <div>
-            <div class="text-2xl font-black tracking-widest text-white uppercase font-heading mb-4">
-                <span class="text-motis-orange">/</span> MOTIS
-            </div>
-            <p class="text-slate-500 font-light max-w-sm">
-                Where perfection is not enough. Elite chemical and industrial solutions since inception.
-            </p>
-        </div>
-        
-        <div class="flex flex-wrap md:justify-end gap-x-10 gap-y-4 text-sm font-medium tracking-widest uppercase text-slate-400">
-            <a class="hover:text-motis-orange transition-colors" href="#">Company</a>
-            <a class="hover:text-motis-orange transition-colors" href="#product-lines">Solutions</a>
-            <a class="hover:text-motis-orange transition-colors" href="#quote">Quote</a>
-            <a class="hover:text-white transition-colors" href="admin/admin_dark.html">Admin</a>
-        </div>
-    </div>
-    
-    <div class="max-w-[1400px] mx-auto mt-16 pt-8 border-t border-white/5 text-slate-600 text-sm font-light text-center md:text-left reveal-on-scroll delay-100">
-        © 2026 Motis Industries Limited. All Rights Reserved.
-    </div>
-</footer>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        
-        // --- PARALLAX BACKGROUND EFFECT ---
-        const parallaxBgs = document.querySelectorAll('.parallax-bg');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            parallaxBgs.forEach(bg => {
-                const speed = bg.getAttribute('data-speed') || 0.5;
-                bg.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-
-        // --- 999x ANTIGRAVITY REVERSIBLE SCROLL REVEAL OBSERVER ---
-        const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -20px 0px' };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if(entry.isIntersecting) {
-                    entry.target.classList.add('reveal-visible');
-                } else {
-                    // This is the 999x magic: Remove the class when it leaves the screen
-                    // so it animates AGAIN when you scroll back!
-                    entry.target.classList.remove('reveal-visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
-
-        // --- 3D TILT & GLOW ANIMATIONS ---
-        const cards = document.querySelectorAll('.product-card');
-        cards.forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
-                
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = ((y - centerY) / centerY) * -5;
-                const rotateY = ((x - centerX) / centerX) * 5;
-                
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-            });
-        });
-        
-        // Handle success redirect message
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('success') === 'true') {
-            alert('Quote Request Deployed Successfully. Our team will contact you shortly.');
-            window.history.replaceState({}, document.title, window.location.pathname);
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-    });
-</script>
+
+        /* Antigravity Animation Delays */
+        .delay-100 {
+            animation-delay: 100ms !important;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms !important;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms !important;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms !important;
+        }
+
+        .delay-500 {
+            animation-delay: 500ms !important;
+        }
+
+        .delay-600 {
+            animation-delay: 600ms !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0F19;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1E293B;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #F97316;
+        }
+
+        /* Antigravity 3D Tilt & Glow Cards */
+        .product-card {
+            transition: transform 0.1s ease, border-color 0.3s ease, background 0.3s ease;
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(800px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px), rgba(249, 115, 22, 0.12), transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+            transition: background 0.3s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .product-card:hover::before {
+            opacity: 1;
+        }
+
+        .product-card>* {
+            position: relative;
+            z-index: 1;
+            transform: translateZ(30px);
+        }
+
+        /* Buttery Smooth Reveal on Scroll (Antigravity Curve) */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(60px) scale(0.98);
+            transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1), transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* 999x Alive Background & Icons */
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+
+            33% {
+                transform: translate(40px, -60px) scale(1.1);
+                opacity: 0.6;
+            }
+
+            66% {
+                transform: translate(-30px, 30px) scale(0.9);
+                opacity: 0.4;
+            }
+
+            100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.3;
+            }
+        }
+
+        .orb-1 {
+            animation: floatOrb 12s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            animation: floatOrb 16s ease-in-out infinite reverse;
+        }
+
+        @keyframes spin-slow {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.6));
+            }
+
+            50% {
+                opacity: 0.7;
+                transform: scale(0.95);
+                filter: drop-shadow(0 0 2px rgba(249, 115, 22, 0.2));
+            }
+        }
+
+        .icon-spin {
+            animation: spin-slow 15s linear infinite;
+            transform-origin: center;
+        }
+
+        .icon-pulse {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-motis-dark text-motis-light antialiased font-sans overflow-x-hidden selection:bg-motis-orange selection:text-white">
+
+    <!-- Top Navigation -->
+    <nav
+        class="fixed top-0 w-full z-50 transition-all duration-500 backdrop-blur-lg bg-motis-dark/80 border-b border-white/5 h-[80px] flex justify-between items-center px-8 md:px-16 max-w-[1600px] mx-auto left-0 right-0 reveal-on-scroll reveal-visible">
+        <div class="text-2xl font-black tracking-widest text-white uppercase font-heading flex items-center">
+            <span class="text-motis-orange mr-2">/</span> MOTIS
+        </div>
+
+        <ul class="hidden md:flex space-x-10 items-center h-full text-sm font-medium tracking-wide text-slate-300">
+            <li><a class="hover:text-white transition-colors" href="#">Home</a></li>
+            <li><a class="hover:text-white transition-colors" href="#product-lines">Solutions</a></li>
+            <li><a class="hover:text-white transition-colors" href="#more-paint">More Paint</a></li>
+            <li><a class="hover:text-white transition-colors" href="#quote">Quote</a></li>
+        </ul>
+
+        <div class="flex items-center space-x-6">
+            <a href="admin/admin_dark.html"
+                class="hidden md:block text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Admin</a>
+            <a href="#quote"
+                class="bg-motis-orange text-white px-6 py-2.5 rounded-sm hover:bg-motis-orange-hover transition-colors font-medium text-sm tracking-wide shadow-lg hover:shadow-motis-orange/30 inline-block">
+                Initiate Request
+            </a>
+        </div>
+    </nav>
+
+    <!-- Redesigned Hero Section -->
+    <header class="relative w-full min-h-screen flex items-center pt-[80px] overflow-hidden">
+        <!-- Parallax Background Image -->
+        <div class="absolute inset-0 z-0 parallax-bg" data-speed="0.4">
+            <img alt="Modern Industrial Facility"
+                class="w-full h-full object-cover opacity-20 mix-blend-luminosity grayscale"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsAxi5gleaFzsoGHVJ8LZZU2jRJ6jT8eMAr4LIWHfyUlSkGX-xlQ1_nQbu7rdGL2Cfk0pT3vkj0Cleh7yOvkTjheeJsVCiXMr_cG9MbzKEgsCT7qlNbkyFwOUZyyvxOQzZawgsN2a0WVlozoQ-IaXYN1JNZtiWGHrS1BYHBRC6lWGUJUV2fvdFt2ekuyDrNdp6nNtUzraKKYncP-QMx8b8lVSdBd8VNQl92l4_HLUKS1lEebmZ2H_4kIDTB5yfWW77fTEOrhQNFv4" />
+            <div
+                class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-motis-dark/40 via-motis-dark/90 to-motis-dark">
+            </div>
+        </div>
+
+        <!-- Glowing Orbs (Alive Background) -->
+        <div class="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-motis-orange/20 rounded-full blur-[120px] pointer-events-none parallax-bg orb-1"
+            data-speed="0.1"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-[700px] h-[700px] bg-blue-500/10 rounded-full blur-[150px] pointer-events-none parallax-bg orb-2"
+            data-speed="0.2"></div>
+
+        <div class="relative z-10 w-full max-w-[1400px] mx-auto px-8 md:px-16 flex flex-col justify-center">
+            <div class="max-w-4xl">
+
+                <div
+                    class="inline-flex items-center space-x-3 bg-white/5 backdrop-blur-md border border-white/10 px-5 py-2 rounded-full mb-8 text-slate-300 reveal-on-scroll reveal-visible delay-100">
+                    <span class="relative flex h-3 w-3">
+                        <span
+                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-motis-orange opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-motis-orange"></span>
+                    </span>
+                    <span class="text-xs uppercase tracking-[0.2em] font-semibold text-white">Motis Industries
+                        Limited</span>
+                </div>
+
+                <h1
+                    class="font-heading text-6xl md:text-[5.5rem] text-white font-black leading-[1.05] tracking-tight mb-8 reveal-on-scroll reveal-visible delay-200">
+                    Where <span
+                        class="text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-500">Perfection</span><br />
+                    Is Not <span class="text-motis-orange">Enough.</span>
+                </h1>
+
+                <p
+                    class="text-lg md:text-2xl text-slate-400 font-light max-w-2xl leading-relaxed mb-12 reveal-on-scroll reveal-visible delay-300">
+                    Delivering uncompromising chemical, coating, and industrial solutions. Engineered to exceed the
+                    highest standards of modern infrastructure.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-5 reveal-on-scroll reveal-visible delay-400">
+                    <a href="#quote"
+                        class="bg-motis-orange text-white font-medium text-lg px-10 py-4 rounded-sm hover:bg-motis-orange-hover transition-all flex items-center justify-center space-x-2 animate-glow">
+                        <span>Deploy Quote Request</span>
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                    <a href="#product-lines"
+                        class="bg-transparent border border-slate-600 text-white font-medium text-lg px-10 py-4 rounded-sm hover:bg-white/5 transition-all flex items-center justify-center">
+                        Explore Capabilities
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Lines Section -->
+    <section class="py-32 bg-motis-slate relative z-20" id="product-lines">
+        <div class="absolute inset-0 opacity-5 bg-[linear-gradient(rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.1)_1px,transparent_1px)]"
+            style="background-size: 40px 40px;"></div>
+
+        <div class="relative z-10 max-w-[1400px] mx-auto px-8 md:px-16">
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <h2 class="font-heading text-4xl md:text-5xl text-white font-bold mb-6 tracking-tight reveal-on-scroll">
+                    Industrial Grade Solutions</h2>
+                <p class="text-lg text-slate-400 font-light leading-relaxed reveal-on-scroll delay-100">
+                    Engineered for maximum endurance. We support enterprise infrastructure, manufacturing, and
+                    commercial development with unyielding chemical solutions.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <path d="M12 3L2 8L12 13L22 8L12 3Z" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M2 13L12 18L22 13" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M2 18L12 23L22 18" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Paints & Decorative</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Advanced architectural surface protection. More
+                        Paint delivers enduring color fidelity and superior environmental resilience.</p>
+                </div>
+                <!-- Card 2 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"
+                                stroke-dasharray="4 4" />
+                            <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Industrial Coatings</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">High-performance barrier systems. Engineered to
+                        shield heavy infrastructure and facilities from extreme chemical and atmospheric stress.</p>
+                </div>
+                <!-- Card 3 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse"
+                        style="animation-delay: -1.5s;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <path d="M3 21H21L12 3L3 21Z" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M9 15L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Construction Chemicals</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Structural enhancement compounds. Advanced
+                        waterproofing, curing, and bonding agents that reinforce foundational integrity.</p>
+                </div>
+                <!-- Card 4 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <path
+                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                stroke="currentColor" stroke-width="1.5" />
+                            <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Hygiene Chemicals</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Enterprise-grade sanitation solutions.
+                        Precision-formulated to maintain absolute sterilization in commercial and industrial
+                        environments.</p>
+                </div>
+                <!-- Card 5 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin"
+                        style="animation-duration: 20s; animation-direction: reverse;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M3 9H21" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M9 21V9" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Adhesives & Sealants</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">High-tensile industrial bonding. Delivering
+                        unyielding structural fusion for extreme manufacturing and assembly applications.</p>
+                </div>
+                <!-- Card 6 -->
+                <div
+                    class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
+                    <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse"
+                        style="animation-delay: -2s;">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            class="w-full h-full text-motis-orange">
+                            <path d="M12 4L4 8L12 12L20 8L12 4Z" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M4 16L12 20L20 16" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                            <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="1.5"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <h3 class="font-heading text-2xl text-white mb-4">Specialty Solutions</h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Custom formulation engineering. Bespoke
+                        chemical solutions rigorously developed to meet exact architectural and industrial
+                        specifications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Brand Section (AI Image) -->
+    <section class="py-32 bg-motis-dark border-t border-white/5 relative z-20" id="more-paint">
+        <div class="max-w-[1400px] mx-auto px-8 md:px-16">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <div class="w-full lg:w-1/2 relative reveal-on-scroll">
+                    <div class="absolute inset-0 bg-motis-orange/20 blur-[100px] rounded-full"></div>
+                    <!-- Replaced with the stunning hyper-realistic AI paint image -->
+                    <div
+                        class="relative rounded-sm overflow-hidden border border-white/10 aspect-[4/3] bg-motis-slate shadow-2xl">
+                        <img alt="Premium More Paint Macro Shot"
+                            class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-1000"
+                            src="images/more_paint_premium_hero_1777844499966.png" />
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-motis-dark via-transparent to-transparent opacity-90 z-10 pointer-events-none">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <div
+                        class="inline-flex items-center space-x-2 bg-motis-orange/10 border border-motis-orange/20 px-4 py-1.5 rounded-sm mb-8 text-motis-orange reveal-on-scroll delay-100">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4">
+                            <path
+                                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                                stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                        </svg>
+                        <span class="text-xs uppercase tracking-[0.2em] font-semibold">Flagship Brand</span>
+                    </div>
+                    <h2
+                        class="font-heading text-4xl md:text-6xl text-white font-black mb-8 tracking-tight reveal-on-scroll delay-200">
+                        Engineered to Endure.</h2>
+                    <p class="text-xl text-slate-400 font-light mb-10 leading-relaxed reveal-on-scroll delay-300">
+                        More Paint isn't just color—it is an impenetrable architectural barrier. Designed for
+                        uncompromising commercial durability and residential elegance, our flagship line is
+                        weather-responsive and structurally resilient.
+                    </p>
+                    <ul class="space-y-6 mb-12">
+                        <li class="flex items-center reveal-on-scroll delay-400">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">
+                                ✓</div>
+                            <span class="text-slate-300 font-medium tracking-wide">Extreme weather-responsive exterior
+                                matrix</span>
+                        </li>
+                        <li class="flex items-center reveal-on-scroll delay-500">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">
+                                ✓</div>
+                            <span class="text-slate-300 font-medium tracking-wide">Commercial-grade interior abrasion
+                                resistance</span>
+                        </li>
+                        <li class="flex items-center reveal-on-scroll delay-600">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center mr-4 text-motis-orange">
+                                ✓</div>
+                            <span class="text-slate-300 font-medium tracking-wide">High-volume deployment for
+                                contractors</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Request Section -->
+    <section class="py-32 bg-motis-slate relative z-20" id="quote">
+        <!-- Diagonal separator -->
+        <div class="absolute top-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" preserveAspectRatio="none" viewBox="0 0 1200 120"
+                xmlns="http://www.w3.org/2000/svg">
+                <path class="fill-motis-dark" d="M1200 120L0 16.48V0h1200v120z"></path>
+            </svg>
+        </div>
+
+        <div class="max-w-5xl mx-auto px-8 md:px-16 relative z-10 pt-10">
+            <div
+                class="bg-motis-dark/80 backdrop-blur-xl border border-white/10 rounded-sm shadow-2xl p-10 md:p-16 reveal-on-scroll">
+                <div class="text-center mb-12">
+                    <h2
+                        class="font-heading text-4xl text-white font-bold mb-4 tracking-tight reveal-on-scroll delay-100">
+                        Initiate Supply Protocol</h2>
+                    <p class="text-slate-400 text-lg font-light reveal-on-scroll delay-200">
+                        Submit your architectural or industrial specifications. Our execution team will deploy a quote
+                        and availability timeline directly to your inbox.
+                    </p>
+                </div>
+
+                <form class="space-y-8" action="/.netlify/functions/captureLead" method="POST">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="reveal-on-scroll delay-100">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Full
+                                Name *</label>
+                            <input
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                placeholder="e.g. John Doe" required name="name" type="text" />
+                        </div>
+                        <div class="reveal-on-scroll delay-200">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Contact
+                                Number *</label>
+                            <input
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                placeholder="+234..." required name="phone" type="tel" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="reveal-on-scroll delay-300">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Email
+                                Address</label>
+                            <input
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                placeholder="john@company.com" name="email" type="email" />
+                        </div>
+                        <div class="reveal-on-scroll delay-400">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Deployment
+                                Location *</label>
+                            <input
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                placeholder="City, State" required name="location" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="reveal-on-scroll delay-500">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Requirement
+                                Type *</label>
+                            <select
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                required name="product_line">
+                                <option disabled selected value="">Select protocol...</option>
+                                <option value="paints">More Paint / Architectural</option>
+                                <option value="industrial">Heavy Industrial Coatings</option>
+                                <option value="construction">Structural Construction Chemicals</option>
+                                <option value="cleaning">Enterprise Hygiene Solutions</option>
+                                <option value="adhesives">High-Tensile Adhesives & Sealants</option>
+                                <option value="specialty">Custom Formulation</option>
+                            </select>
+                        </div>
+                        <div class="reveal-on-scroll delay-600">
+                            <label
+                                class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Volume
+                                Specification</label>
+                            <input
+                                class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
+                                placeholder="e.g. 50 Drums" name="quantity" type="text" />
+                        </div>
+                    </div>
+
+                    <div class="reveal-on-scroll delay-200">
+                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Project
+                            Specifications *</label>
+                        <textarea
+                            class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors resize-none"
+                            placeholder="Detail your specific architectural or industrial requirements..." required
+                            name="message" rows="5"></textarea>
+                    </div>
+
+                    <div class="pt-4 reveal-on-scroll delay-300">
+                        <button
+                            class="w-full bg-motis-orange text-white font-medium text-lg px-8 py-5 rounded-sm hover:bg-motis-orange-hover transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-motis-orange/20"
+                            type="submit">
+                            <span>Execute Request</span>
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-motis-dark border-t border-white/5 py-16 px-8 md:px-16 relative z-20">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center reveal-on-scroll">
+            <div>
+                <div class="text-2xl font-black tracking-widest text-white uppercase font-heading mb-4">
+                    <span class="text-motis-orange">/</span> MOTIS
+                </div>
+                <p class="text-slate-500 font-light max-w-sm">
+                    Where perfection is not enough. Elite chemical and industrial solutions since inception.
+                </p>
+            </div>
+
+            <div
+                class="flex flex-wrap md:justify-end gap-x-10 gap-y-4 text-sm font-medium tracking-widest uppercase text-slate-400">
+                <a class="hover:text-motis-orange transition-colors" href="#">Company</a>
+                <a class="hover:text-motis-orange transition-colors" href="#product-lines">Solutions</a>
+                <a class="hover:text-motis-orange transition-colors" href="#quote">Quote</a>
+                <a class="hover:text-white transition-colors" href="admin/admin_dark.html">Admin</a>
+            </div>
+        </div>
+
+        <div
+            class="max-w-[1400px] mx-auto mt-16 pt-8 border-t border-white/5 text-slate-600 text-sm font-light text-center md:text-left reveal-on-scroll delay-100">
+            © 2026 Motis Industries Limited. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- PARALLAX BACKGROUND EFFECT ---
+            const parallaxBgs = document.querySelectorAll('.parallax-bg');
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                parallaxBgs.forEach(bg => {
+                    const speed = bg.getAttribute('data-speed') || 0.5;
+                    bg.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+
+            // --- 999x ANTIGRAVITY REVERSIBLE SCROLL REVEAL OBSERVER ---
+            const observerOptions = { threshold: 0.05, rootMargin: '0px 0px -20px 0px' };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                    } else {
+                        // This is the 999x magic: Remove the class when it leaves the screen
+                        // so it animates AGAIN when you scroll back!
+                        entry.target.classList.remove('reveal-visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+            // --- 3D TILT & GLOW ANIMATIONS ---
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = ((y - centerY) / centerY) * -5;
+                    const rotateY = ((x - centerX) / centerX) * 5;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+                });
+            });
+
+            // Handle success redirect message
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                alert('Quote Request Deployed Successfully. Our team will contact you shortly.');
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+    </script>
 </body>
+
 </html>
