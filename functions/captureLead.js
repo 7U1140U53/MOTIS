@@ -1,62 +1,125 @@
-const { getStore } = require("@netlify/blobs");
+const { createClient } = require("@supabase/supabase-js");
+
+// Initialize Supabase Client
+// SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set securely in Netlify
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 exports.handler = async (event, context) => {
+  // Setup CORS headers to allow modern frontend AJAX requests
+  const headers = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Content-Type': 'application/json',
+  };
+
+  // Handle preflight CORS request
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ message: 'CORS Preflight Success' }),
+    };
+  }
+
   // Only accept POST requests
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers,
       body: JSON.stringify({ message: 'Method Not Allowed' }),
-      headers: { 'Content-Type': 'application/json' },
     };
   }
 
-  // Parse incoming lead data
-  let lead;
+  // Parse incoming JSON body
+  let body;
   try {
-    lead = JSON.parse(event.body);
+    body = JSON.parse(event.body);
   } catch (err) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ message: 'Invalid JSON' }),
-      headers: { 'Content-Type': 'application/json' },
+      headers,
+      body: JSON.stringify({ message: 'Invalid JSON request body' }),
+    };
+  }
+
+  // Destructure incoming lead payload
+  const { 
+    name, 
+    phone, 
+    email, 
+    location, 
+    product_line, 
+    quantity, 
+    message, 
+    brand, 
+    referrer_id, 
+    ai_estimation 
+  } = body;
+
+  // Validate required fields (following our strict PRD specification)
+  if (!name || !phone || !location || !product_line || !message) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ message: 'Validation Failed: name, phone, location, product_line, and message are required.' }),
+    };
+  }
+
+  // Check database configuration
+  if (!supabaseUrl || !supabaseServiceKey) {
+    console.error("Configuration Error: Supabase credentials missing in Environment Variables!");
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ message: 'Server database configuration is missing.' }),
     };
   }
 
   try {
-    // Connect to the Netlify Blob store named "motis_leads"
-    const store = getStore("motis_leads");
+    // Create Supabase Client with service key to securely bypass RLS policies
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Load existing leads or start with empty array
-    let leads = [];
-    const existing = await store.get("all_leads", { type: "json" });
-    if (existing) {
-      leads = existing;
-    }
+    // Insert lead into Supabase PostgreSQL database
+    const { data, error } = await supabase
+      .from('leads')
+      .insert([
+        {
+          name: name.trim(),
+          phone: phone.trim(),
+          email: email ? email.trim() : null,
+          location: location.trim(),
+          product_line: product_line.trim(),
+          quantity: quantity ? quantity.trim() : null,
+          message: message.trim(),
+          brand: brand ? brand.trim() : 'motis_industrial',
+          referrer_id: referrer_id ? referrer_id.trim() : null,
+          ai_estimation: ai_estimation || null,
+          status: 'New'
+        }
+      ])
+      .select();
 
-    // Append new lead with metadata
-    leads.push({
-      id: Date.now(),
-      ...lead,
-      capturedAt: new Date().toISOString(),
-    });
+    if (error) throw error;
 
-    // Write back to blob store
-    await store.setJSON("all_leads", leads);
-
-    // Redirect to home page or send success response
+    // Send successful response with the created lead details
     return {
-      statusCode: 302, // Redirect after form submit
-      headers: {
-        Location: '/index.html?success=true',
-      },
-      body: 'Redirecting...',
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        success: true,
+        message: 'Lead captured successfully',
+        lead: data[0]
+      }),
     };
+
   } catch (error) {
-    console.error("Error saving lead to blob:", error);
+    console.error("Error writing lead record to Supabase:", error);
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'Internal Server Error' }),
-      headers: { 'Content-Type': 'application/json' },
+      headers,
+      body: JSON.stringify({ message: 'Internal Server Error while saving lead.' }),
     };
   }
 };

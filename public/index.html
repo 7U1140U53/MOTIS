@@ -210,13 +210,11 @@
         <ul class="hidden md:flex space-x-10 items-center h-full text-sm font-medium tracking-wide text-slate-300">
             <li><a class="hover:text-white transition-colors" href="#">Home</a></li>
             <li><a class="hover:text-white transition-colors" href="#product-lines">Solutions</a></li>
-            <li><a class="hover:text-white transition-colors" href="#more-paint">More Paint</a></li>
+            <li><a class="hover:text-white transition-colors" href="more-paint.html">More Paint</a></li>
             <li><a class="hover:text-white transition-colors" href="#quote">Quote</a></li>
         </ul>
 
         <div class="flex items-center space-x-6">
-            <a href="admin/admin_dark.html"
-                class="hidden md:block text-xs uppercase tracking-widest text-slate-500 hover:text-white transition-colors">Admin</a>
             <a href="#quote"
                 class="bg-motis-orange text-white px-6 py-2.5 rounded-sm hover:bg-motis-orange-hover transition-colors font-medium text-sm tracking-wide shadow-lg hover:shadow-motis-orange/30 inline-block">
                 Initiate Request
@@ -302,7 +300,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Card 1 -->
-                <div
+                <div onclick="window.location.href='more-paint.html'"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -320,90 +318,99 @@
                         Paint delivers enduring color fidelity and superior environmental resilience.</p>
                 </div>
                 <!-- Card 2 -->
-                <div
+                <div onclick="openB2BSpecModal('coatings')"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="w-full h-full text-motis-orange">
+                             class="w-full h-full text-motis-orange">
                             <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"
-                                stroke-dasharray="4 4" />
+                                    stroke-dasharray="4 4" />
                             <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.5" />
                         </svg>
                     </div>
-                    <h3 class="font-heading text-2xl text-white mb-4">Industrial Coatings</h3>
-                    <p class="text-slate-400 font-light leading-relaxed">High-performance barrier systems. Engineered to
-                        shield heavy infrastructure and facilities from extreme chemical and atmospheric stress.</p>
+                    <h3 class="font-heading text-2xl text-white mb-4 flex justify-between items-center">
+                        <span>Industrial Coatings</span>
+                        <span class="material-symbols-outlined text-sm text-slate-500 group-hover:text-motis-orange">open_in_new</span>
+                    </h3>
+                    <p class="text-slate-400 font-light leading-relaxed">High-performance protective coatings. Click to view ASTM and ISO chemical barrier specifications.</p>
                 </div>
                 <!-- Card 3 -->
-                <div
+                <div onclick="openB2BSpecModal('construction')"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse"
-                        style="animation-delay: -1.5s;">
+                         style="animation-delay: -1.5s;">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="w-full h-full text-motis-orange">
+                             class="w-full h-full text-motis-orange">
                             <path d="M3 21H21L12 3L3 21Z" stroke="currentColor" stroke-width="1.5"
-                                stroke-linejoin="round" />
+                                  stroke-linejoin="round" />
                             <path d="M9 15L15 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                         </svg>
                     </div>
-                    <h3 class="font-heading text-2xl text-white mb-4">Construction Chemicals</h3>
-                    <p class="text-slate-400 font-light leading-relaxed">Structural enhancement compounds. Advanced
-                        waterproofing, curing, and bonding agents that reinforce foundational integrity.</p>
+                    <h3 class="font-heading text-2xl text-white mb-4 flex justify-between items-center">
+                        <span>Construction Chemicals</span>
+                        <span class="material-symbols-outlined text-sm text-slate-500 group-hover:text-motis-orange">open_in_new</span>
+                    </h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Structural admixtures and sealants. Click to view high-tensile waterproofing specifications.</p>
                 </div>
                 <!-- Card 4 -->
-                <div
+                <div onclick="openB2BSpecModal('hygiene')"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-100 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="w-full h-full text-motis-orange">
+                             class="w-full h-full text-motis-orange">
                             <path
                                 d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
                                 stroke="currentColor" stroke-width="1.5" />
                             <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                stroke-linejoin="round" />
+                                  stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3 class="font-heading text-2xl text-white mb-4">Hygiene Chemicals</h3>
-                    <p class="text-slate-400 font-light leading-relaxed">Enterprise-grade sanitation solutions.
-                        Precision-formulated to maintain absolute sterilization in commercial and industrial
-                        environments.</p>
+                    <h3 class="font-heading text-2xl text-white mb-4 flex justify-between items-center">
+                        <span>Hygiene Chemicals</span>
+                        <span class="material-symbols-outlined text-sm text-slate-500 group-hover:text-motis-orange">open_in_new</span>
+                    </h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Enterprise sanitation solutions. Click to inspect high-concentration safety certifications.</p>
                 </div>
                 <!-- Card 5 -->
-                <div
+                <div onclick="openB2BSpecModal('adhesives')"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-200 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-spin"
-                        style="animation-duration: 20s; animation-direction: reverse;">
+                         style="animation-duration: 20s; animation-direction: reverse;">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="w-full h-full text-motis-orange">
+                             class="w-full h-full text-motis-orange">
                             <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" />
                             <path d="M3 9H21" stroke="currentColor" stroke-width="1.5" />
                             <path d="M9 21V9" stroke="currentColor" stroke-width="1.5" />
                         </svg>
                     </div>
-                    <h3 class="font-heading text-2xl text-white mb-4">Adhesives & Sealants</h3>
-                    <p class="text-slate-400 font-light leading-relaxed">High-tensile industrial bonding. Delivering
-                        unyielding structural fusion for extreme manufacturing and assembly applications.</p>
+                    <h3 class="font-heading text-2xl text-white mb-4 flex justify-between items-center">
+                        <span>Adhesives & Sealants</span>
+                        <span class="material-symbols-outlined text-sm text-slate-500 group-hover:text-motis-orange">open_in_new</span>
+                    </h3>
+                    <p class="text-slate-400 font-light leading-relaxed">High-tensile architectural fusion. Click to view expansion joint bonding specifications.</p>
                 </div>
                 <!-- Card 6 -->
-                <div
+                <div onclick="openB2BSpecModal('specialty')"
                     class="product-card reveal-on-scroll bg-motis-dark/50 backdrop-blur-sm border border-white/5 rounded-sm p-8 hover:bg-white/5 hover:border-motis-orange/40 cursor-pointer shadow-2xl delay-300 group">
                     <div class="w-16 h-16 mb-8 group-hover:scale-110 transition-transform icon-pulse"
-                        style="animation-delay: -2s;">
+                         style="animation-delay: -2s;">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
-                            class="w-full h-full text-motis-orange">
+                             class="w-full h-full text-motis-orange">
                             <path d="M12 4L4 8L12 12L20 8L12 4Z" stroke="currentColor" stroke-width="1.5"
-                                stroke-linejoin="round" />
+                                  stroke-linejoin="round" />
                             <path d="M4 16L12 20L20 16" stroke="currentColor" stroke-width="1.5"
-                                stroke-linejoin="round" />
+                                  stroke-linejoin="round" />
                             <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="1.5"
-                                stroke-linejoin="round" />
+                                  stroke-linejoin="round" />
                         </svg>
                     </div>
-                    <h3 class="font-heading text-2xl text-white mb-4">Specialty Solutions</h3>
-                    <p class="text-slate-400 font-light leading-relaxed">Custom formulation engineering. Bespoke
-                        chemical solutions rigorously developed to meet exact architectural and industrial
-                        specifications.</p>
+                    <h3 class="font-heading text-2xl text-white mb-4 flex justify-between items-center">
+                        <span>Specialty Solutions</span>
+                        <span class="material-symbols-outlined text-sm text-slate-500 group-hover:text-motis-orange">open_in_new</span>
+                    </h3>
+                    <p class="text-slate-400 font-light leading-relaxed">Bespoke synthesis compounds. Click to view custom formulation methods and approvals.</p>
                 </div>
+            </div>
             </div>
         </div>
     </section>
@@ -467,6 +474,13 @@
                                 contractors</span>
                         </li>
                     </ul>
+                    <div class="reveal-on-scroll delay-700">
+                        <a href="more-paint.html"
+                            class="inline-flex items-center space-x-3 bg-motis-orange text-white font-semibold tracking-wide px-8 py-4 rounded-sm hover:bg-motis-orange-hover transition-colors shadow-lg hover:shadow-motis-orange/20">
+                            <span>Launch Flagship Brand Portal</span>
+                            <span class="material-symbols-outlined text-sm">open_in_new</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -495,23 +509,25 @@
                     </p>
                 </div>
 
-                <form class="space-y-8" action="/.netlify/functions/captureLead" method="POST">
+                <form id="b2bLeadForm" class="space-y-8">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="reveal-on-scroll delay-100">
                             <label
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Full
                                 Name *</label>
                             <input
+                                id="b2bName"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                placeholder="e.g. John Doe" required name="name" type="text" />
+                                placeholder="e.g. John Doe" required type="text" />
                         </div>
                         <div class="reveal-on-scroll delay-200">
                             <label
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Contact
                                 Number *</label>
                             <input
+                                id="b2bPhone"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                placeholder="+234..." required name="phone" type="tel" />
+                                placeholder="+234..." required type="tel" />
                         </div>
                     </div>
 
@@ -521,16 +537,18 @@
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Email
                                 Address</label>
                             <input
+                                id="b2bEmail"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                placeholder="john@company.com" name="email" type="email" />
+                                placeholder="john@company.com" type="email" />
                         </div>
                         <div class="reveal-on-scroll delay-400">
                             <label
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Deployment
                                 Location *</label>
                             <input
+                                id="b2bLocation"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                placeholder="City, State" required name="location" type="text" />
+                                placeholder="City, State" required type="text" />
                         </div>
                     </div>
 
@@ -540,8 +558,9 @@
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Requirement
                                 Type *</label>
                             <select
+                                id="b2bProduct"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                required name="product_line">
+                                required>
                                 <option disabled selected value="">Select protocol...</option>
                                 <option value="paints">More Paint / Architectural</option>
                                 <option value="industrial">Heavy Industrial Coatings</option>
@@ -556,8 +575,9 @@
                                 class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Volume
                                 Specification</label>
                             <input
+                                id="b2bQuantity"
                                 class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors"
-                                placeholder="e.g. 50 Drums" name="quantity" type="text" />
+                                placeholder="e.g. 50 Drums" type="text" />
                         </div>
                     </div>
 
@@ -565,17 +585,20 @@
                         <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Project
                             Specifications *</label>
                         <textarea
+                            id="b2bMessage"
                             class="w-full rounded-sm border-white/10 bg-motis-slate text-white focus:border-motis-orange focus:ring-motis-orange px-5 py-4 transition-colors resize-none"
                             placeholder="Detail your specific architectural or industrial requirements..." required
-                            name="message" rows="5"></textarea>
+                            rows="5"></textarea>
                     </div>
 
                     <div class="pt-4 reveal-on-scroll delay-300">
                         <button
+                            id="b2bSubmitBtn"
                             class="w-full bg-motis-orange text-white font-medium text-lg px-8 py-5 rounded-sm hover:bg-motis-orange-hover transition-colors flex items-center justify-center space-x-3 shadow-lg hover:shadow-motis-orange/20"
                             type="submit">
-                            <span>Execute Request</span>
-                            <span class="material-symbols-outlined">send</span>
+                            <span id="b2bSubmitText">Execute Request</span>
+                            <span id="b2bSubmitSpinner" class="material-symbols-outlined animate-spin hidden">hourglass_empty</span>
+                            <span id="b2bSubmitIcon" class="material-symbols-outlined">send</span>
                         </button>
                     </div>
                 </form>
@@ -598,9 +621,9 @@
             <div
                 class="flex flex-wrap md:justify-end gap-x-10 gap-y-4 text-sm font-medium tracking-widest uppercase text-slate-400">
                 <a class="hover:text-motis-orange transition-colors" href="#">Company</a>
+                <a class="hover:text-motis-orange transition-colors" href="more-paint.html">More Paint</a>
                 <a class="hover:text-motis-orange transition-colors" href="#product-lines">Solutions</a>
                 <a class="hover:text-motis-orange transition-colors" href="#quote">Quote</a>
-                <a class="hover:text-white transition-colors" href="admin/admin_dark.html">Admin</a>
             </div>
         </div>
 
@@ -663,14 +686,412 @@
                 });
             });
 
-            // Handle success redirect message
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('success') === 'true') {
-                alert('Quote Request Deployed Successfully. Our team will contact you shortly.');
-                window.history.replaceState({}, document.title, window.location.pathname);
+            // --- B2B AJAX FORM SUBMISSION ---
+            const b2bForm = document.getElementById('b2bLeadForm');
+            const b2bSuccessModal = document.getElementById('b2bSuccessModal');
+            const b2bCloseSuccessBtn = document.getElementById('b2bCloseSuccessBtn');
+            const b2bSubmitText = document.getElementById('b2bSubmitText');
+            const b2bSubmitSpinner = document.getElementById('b2bSubmitSpinner');
+            const b2bSubmitIcon = document.getElementById('b2bSubmitIcon');
+
+            if (b2bForm) {
+                b2bForm.addEventListener('submit', async (e) => {
+                    e.preventDefault();
+
+                    // Toggle active loading state
+                    b2bSubmitText.textContent = 'Processing request...';
+                    b2bSubmitSpinner.classList.remove('hidden');
+                    b2bSubmitIcon.classList.add('hidden');
+
+                    // Package lead payload
+                    const payload = {
+                        name: document.getElementById('b2bName').value,
+                        phone: document.getElementById('b2bPhone').value,
+                        email: document.getElementById('b2bEmail').value || null,
+                        location: document.getElementById('b2bLocation').value,
+                        product_line: 'motis_' + document.getElementById('b2bProduct').value,
+                        quantity: document.getElementById('b2bQuantity').value || null,
+                        message: document.getElementById('b2bMessage').value,
+                        brand: 'motis_industrial',
+                        referrer_id: null // B2B direct forms don't capture partner links
+                    };
+
+                    try {
+                        const response = await fetch('/.netlify/functions/captureLead', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (response.ok && result.success) {
+                            // Show beautiful success overlay and reset form
+                            b2bSuccessModal.classList.remove('opacity-0', 'pointer-events-none');
+                            b2bForm.reset();
+                        } else {
+                            throw new Error(result.message || 'API rejected B2B lead');
+                        }
+
+                    } catch (error) {
+                        console.error("B2B Submission failed:", error);
+                        alert("Submission protocol failed. Check your connection or try again shortly.");
+                    } finally {
+                        // Reset button state
+                        b2bSubmitText.textContent = 'Execute Request';
+                        b2bSubmitSpinner.classList.add('hidden');
+                        b2bSubmitIcon.classList.remove('hidden');
+                    }
+                });
             }
+
+            // Close Modal Listener
+            if (b2bCloseSuccessBtn) {
+                b2bCloseSuccessBtn.addEventListener('click', () => {
+                    b2bSuccessModal.classList.add('opacity-0', 'pointer-events-none');
+                });
+            }
+
+            // =============================================================
+            // --- B2B TECHNICAL CONSULTANT AI CHAT ENGINE ---
+            // =============================================================
+            const b2bChatForm = document.getElementById('b2bChatForm');
+            const b2bChatInput = document.getElementById('b2bChatInput');
+            const b2bChatHistory = document.getElementById('b2bChatHistory');
+
+            let b2bConversationHistory = [];
+
+            function renderB2BMarkdown(text) {
+                return text
+                    .replace(/\*\*(.*?)\*\//g, '<strong class="text-white">$1</strong>')
+                    .replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
+                    .replace(/^\|(.+)\|$/gm, (match, content) => {
+                        const cells = content.split('|').map(c => c.trim());
+                        return '<tr>' + cells.map(c => `<td class="border border-white/10 px-3 py-1.5 text-xs">${c}</td>`).join('') + '</tr>';
+                    })
+                    .replace(/^\|[-|:\s]+\|$/gm, '')
+                    .replace(/(<tr>.*<\/tr>)/gs, '<div class="overflow-x-auto my-3"><table class="w-full border-collapse text-slate-300">$1</table></div>')
+                    .replace(/\n/g, '<br />');
+            }
+
+            function appendB2BMessage(role, htmlContent) {
+                const isUser = role === 'user';
+                const wrapper = document.createElement('div');
+                wrapper.className = `flex ${isUser ? 'justify-end' : 'space-x-3'} max-w-full`;
+
+                if (!isUser) {
+                    const avatar = document.createElement('div');
+                    avatar.className = 'w-8 h-8 rounded-full bg-motis-orange/10 border border-motis-orange/20 text-motis-orange flex items-center justify-center shrink-0';
+                    avatar.innerHTML = '<span class="material-symbols-outlined text-lg">precision_manufacturing</span>';
+                    wrapper.appendChild(avatar);
+                }
+
+                const bubble = document.createElement('div');
+                bubble.className = isUser
+                    ? 'bg-motis-orange/20 border border-motis-orange/20 rounded-sm p-4 text-white text-sm font-light leading-relaxed max-w-[80%]'
+                    : 'bg-slate-800/60 border border-white/5 rounded-sm p-4 text-slate-300 text-sm font-light leading-relaxed flex-1';
+                bubble.innerHTML = htmlContent;
+                wrapper.appendChild(bubble);
+
+                b2bChatHistory.appendChild(wrapper);
+                b2bChatHistory.scrollTop = b2bChatHistory.scrollHeight;
+                return wrapper;
+            }
+
+            function showB2BTypingIndicator() {
+                const typingEl = document.createElement('div');
+                typingEl.id = 'b2bTypingIndicator';
+                typingEl.className = 'flex space-x-3 max-w-[85%]';
+                typingEl.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-motis-orange/10 border border-motis-orange/20 text-motis-orange flex items-center justify-center shrink-0">
+                        <span class="material-symbols-outlined text-lg">precision_manufacturing</span>
+                    </div>
+                    <div class="bg-slate-800/60 border border-white/5 rounded-sm p-4 flex items-center space-x-2">
+                        <span class="w-2 h-2 bg-motis-orange rounded-full animate-bounce" style="animation-delay:0ms"></span>
+                        <span class="w-2 h-2 bg-motis-orange rounded-full animate-bounce" style="animation-delay:150ms"></span>
+                        <span class="w-2 h-2 bg-motis-orange rounded-full animate-bounce" style="animation-delay:300ms"></span>
+                    </div>`;
+                b2bChatHistory.appendChild(typingEl);
+                b2bChatHistory.scrollTop = b2bChatHistory.scrollHeight;
+            }
+
+            function removeB2BTypingIndicator() {
+                const el = document.getElementById('b2bTypingIndicator');
+                if (el) el.remove();
+            }
+
+            b2bChatForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const userMessage = b2bChatInput.value.trim();
+                if (!userMessage) return;
+
+                b2bChatInput.value = '';
+                b2bChatInput.disabled = true;
+
+                appendB2BMessage('user', userMessage);
+                showB2BTypingIndicator();
+
+                try {
+                    const response = await fetch('/.netlify/functions/aiQuoteAssistant', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            message: userMessage,
+                            history: b2bConversationHistory,
+                            brand: 'motis' // Triggers the B2B industrial prompt
+                        })
+                    });
+
+                    const result = await response.json();
+                    removeB2BTypingIndicator();
+
+                    if (response.ok && result.success) {
+                        const aiText = result.reply;
+                        const aiBubble = appendB2BMessage('model', renderB2BMarkdown(aiText));
+
+                        // Add WhatsApp referral CTA
+                        const ctaBtn = document.createElement('button');
+                        ctaBtn.className = 'mt-4 w-full flex items-center justify-center space-x-2 bg-green-700/30 hover:bg-green-700/50 border border-green-700/40 text-green-400 text-xs font-semibold px-4 py-2.5 rounded-sm transition-colors';
+                        ctaBtn.innerHTML = '<span class="material-symbols-outlined text-base">chat</span><span>Forward Specs to WhatsApp Sales Liaison</span>';
+                        ctaBtn.addEventListener('click', () => {
+                            const waText = encodeURIComponent(`Hello Motis Engineering Liaison! I compiled this industrial specification using your B2B Assistant:\n\n${aiText}\n\nI would like to initiate B2B supply protocols.`);
+                            window.open(`https://wa.me/234XXXXXXXXXX?text=${waText}`, '_blank');
+                        });
+                        aiBubble.querySelector('div:last-child').appendChild(ctaBtn);
+
+                        b2bConversationHistory.push({ role: 'user', text: userMessage });
+                        b2bConversationHistory.push({ role: 'model', text: aiText });
+
+                        if (b2bConversationHistory.length > 20) {
+                            b2bConversationHistory = b2bConversationHistory.slice(-20);
+                        }
+                    } else {
+                        throw new Error(result.message || 'AI B2B consultation error');
+                    }
+                } catch (error) {
+                    removeB2BTypingIndicator();
+                    console.error('B2B AI Error:', error);
+                    appendB2BMessage('model', '⚠️ Motis B2B Engineering Consultant is currently offline. Please deploy your quote inquiry using the Supply Protocol form below.');
+                } finally {
+                    b2bChatInput.disabled = false;
+                    b2bChatInput.focus();
+                }
+            });
+
+            // Drawer controls
+            window.toggleB2BAiDrawer = function(open) {
+                const drawer = document.getElementById('b2bAiDrawer');
+                if (open) {
+                    drawer.classList.remove('translate-x-full');
+                    document.getElementById('b2bChatInput').focus();
+                } else {
+                    drawer.classList.add('translate-x-full');
+                }
+            };
+
+            // --- B2B TECHNICAL SPEC SHEET CONTROLLERS ---
+            const b2bSpecDetails = {
+                coatings: {
+                    title: "Industrial Coatings & Barriers",
+                    desc: "High-performance protective coatings engineered to shield steel structures, maritime vessels, and chemical storage facilities. Formulated to withstand extremely corrosive salty coastal air and heavy atmospheric carbonation.",
+                    compound: "Dual-Pack Polyamine-Cured Epoxies & Aliphatic Polyurethanes",
+                    industries: "Oil & Gas, Offshore Marine, Public Infrastructure, Heavy Manufacturing",
+                    standards: "ISO 12944 (C5-M Highly Corrosive Category), ASTM D4060 Abrasion Resistance"
+                },
+                construction: {
+                    title: "Construction Chemicals & Admixtures",
+                    desc: "Advanced waterproofing agents, structural bonding grouts, and concrete admixtures. Formulated to accelerate curing speeds, enhance mechanical compression bounds, and prevent drying shrinkage cracks in hot tropical climates.",
+                    compound: "Polycarboxylate Ether (PCE) Superplasticizers & Liquid Crystalline Membranes",
+                    industries: "High-Rise Commercial Concrete Foundations, Road Works, Bridges, Wastewater Plants",
+                    standards: "ASTM C494 (Type F High Range Admixtures), BS EN 934-2 Construction Admixtures"
+                },
+                hygiene: {
+                    title: "Corporate Hygiene & Sterilizers",
+                    desc: "Industrial-strength biocides, sanitizers, and surfactants tailored for enterprise disinfection protocols. Highly dilutable formulas that eliminate 99.999% of pathogenetic strains while maintaining surface chemical integrity.",
+                    compound: "Quaternary Ammonium Compounds (QAC) & High-Dilution Sodium Hypochlorites",
+                    industries: "Hospitality Franchises, Private Medical Facilities, Commercial High-Rise Offices",
+                    standards: "WHO/CDC Sterilization Protocols, NAFDAC Registered & Cleared"
+                },
+                adhesives: {
+                    title: "Structural Adhesives & Sealants",
+                    desc: "High-tensile architectural bonding agents. Engineered to maintain absolute seals and high flexibility in heavy building facades under intense structural oscillations and high-velocity wind loads.",
+                    compound: "Advanced Facade Structural Silicones & Polyurethane Sealants",
+                    industries: "Architectural Curtain Wall Glass, Heavy Vehicle Assemblies, Structural Glazing",
+                    standards: "ISO 11600 Structural Facades, ASTM C920 Joint Sealants"
+                },
+                specialty: {
+                    title: "Specialty Formulations",
+                    desc: "Custom-developed chemical binders, fire-retardants, and specialized additives. Formulated directly by our lead research chemist to meet non-standard mechanical and thermal tolerances.",
+                    compound: "Custom Co-Polymer Blends & High-Temperature Binders",
+                    industries: "Automotive Parts, Chemical Refineries, Defense Infrastructure",
+                    standards: "Individually certified under matching ASTM testing protocols per custom contract"
+                }
+            };
+
+            let currentActiveB2BKey = null;
+
+            window.openB2BSpecModal = function(key) {
+                const spec = b2bSpecDetails[key];
+                if (!spec) return;
+                currentActiveB2BKey = key;
+
+                document.getElementById('b2b-detail-title').textContent = spec.title;
+                document.getElementById('b2b-detail-desc').textContent = spec.desc;
+                document.getElementById('b2b-detail-compound').textContent = spec.compound;
+                document.getElementById('b2b-detail-industries').textContent = spec.industries;
+                document.getElementById('b2b-detail-standards').textContent = spec.standards;
+
+                document.getElementById('b2bSpecModal').classList.remove('opacity-0', 'pointer-events-none');
+            };
+
+            window.closeB2BSpecModal = function() {
+                document.getElementById('b2bSpecModal').classList.add('opacity-0', 'pointer-events-none');
+                currentActiveB2BKey = null;
+            };
+
+            window.consultB2BAiFromCatalog = function() {
+                const spec = b2bSpecDetails[currentActiveB2BKey];
+                if (!spec) return;
+                closeB2BSpecModal();
+
+                // Open B2B Chat Drawer with preset query
+                toggleB2BAiDrawer(true);
+                const query = `What are the technical certifications, ASTM compliance details, and wholesale lead times for your ${spec.title}?`;
+                
+                document.getElementById('b2bChatInput').value = query;
+                document.getElementById('b2bChatForm').dispatchEvent(new Event('submit'));
+            };
         });
     </script>
+
+    <!-- Success Modal Overlay -->
+    <div id="b2bSuccessModal" class="fixed inset-0 z-50 bg-motis-dark/95 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-motis-slate border border-white/10 p-10 max-w-md w-full rounded-sm text-center shadow-2xl relative overflow-hidden">
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-motis-orange/20 blur-[50px] rounded-full"></div>
+            <div class="w-20 h-20 bg-motis-dark border border-white/5 text-motis-orange rounded-full flex items-center justify-center mx-auto mb-8">
+                <span class="material-symbols-outlined text-4xl">check_circle</span>
+            </div>
+            <h3 class="font-heading text-3xl text-white font-bold mb-4">Protocol Initiated</h3>
+            <p class="text-slate-400 font-light leading-relaxed mb-8">
+                Your B2B industrial quote request has been securely compiled and recorded in our central enterprise ledger. Our engineering team will review the specifications immediately.
+            </p>
+            <button id="b2bCloseSuccessBtn" class="w-full bg-motis-orange hover:bg-motis-orange-hover text-white py-4 font-semibold tracking-wide rounded-sm transition-colors uppercase text-sm">
+                Acknowledge Protocol
+            </button>
+        </div>
+    </div>
+
+    <!-- B2B Industrial solutions Spec Modal -->
+    <div id="b2bSpecModal" class="fixed inset-0 z-50 bg-motis-dark/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-motis-slate border border-white/10 w-full max-w-2xl rounded-sm shadow-2xl relative overflow-hidden flex flex-col p-8 md:p-10 max-h-[85vh]">
+            <div class="absolute -top-20 -right-20 w-40 h-40 bg-motis-orange/20 blur-[60px] rounded-full"></div>
+            
+            <div class="flex justify-between items-start mb-6 shrink-0 relative z-10">
+                <div>
+                    <span class="text-[10px] font-bold text-motis-orange tracking-[0.25em] uppercase block mb-1">Industrial Specification Sheet</span>
+                    <h3 class="font-heading text-3xl text-white font-bold tracking-tight" id="b2b-detail-title">Solution Name</h3>
+                </div>
+                <button onclick="closeB2BSpecModal()" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Modal Content -->
+            <div class="flex-grow overflow-y-auto space-y-6 pr-2 mb-8 relative z-10 text-sm">
+                <div>
+                    <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-2">Technical Capabilities Overview</span>
+                    <p class="text-slate-300 font-light leading-relaxed" id="b2b-detail-desc">Description</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                    <div>
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Chemical Compound Base</span>
+                        <div class="text-white font-semibold" id="b2b-detail-compound">Compound</div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Target Commercial Industries</span>
+                        <div class="text-white font-semibold" id="b2b-detail-industries">Industries</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-white/5">
+                    <div>
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Standards Compliance</span>
+                        <div class="text-white font-semibold" id="b2b-detail-standards">Standards</div>
+                    </div>
+                    <div>
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Logistics Allocation</span>
+                        <div class="text-white font-semibold">Direct Factory-to-Site Dispatch</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer actions -->
+            <div class="flex flex-col sm:flex-row gap-4 shrink-0 relative z-10 pt-4 border-t border-white/5">
+                <button onclick="closeB2BSpecModal()" class="flex-grow bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 font-semibold py-3 px-6 rounded-sm transition-colors text-center text-sm">
+                    Dismiss Specs
+                </button>
+                <button onclick="consultB2BAiFromCatalog()" class="flex-grow bg-motis-orange hover:bg-motis-orange-hover text-white font-semibold py-3 px-6 rounded-sm transition-colors flex items-center justify-center space-x-2 text-sm shadow-md">
+                    <span class="material-symbols-outlined text-base">psychology</span>
+                    <span>Consult B2B AI Engineering</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Glassmorphic B2B AI Chat Button -->
+    <button onclick="toggleB2BAiDrawer(true)" class="fixed bottom-8 right-8 z-40 bg-motis-orange text-white p-5 rounded-full shadow-[0_0_20px_rgba(249,115,22,0.4)] hover:bg-motis-orange-hover hover:scale-105 transition-all flex items-center justify-center border border-white/10 group">
+        <span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform">psychology</span>
+        <span class="max-w-0 overflow-hidden group-hover:max-w-[200px] transition-all duration-300 ease-out text-sm font-semibold tracking-wider uppercase ml-0 group-hover:ml-3 whitespace-nowrap">
+            B2B Engineering AI
+        </span>
+    </button>
+
+    <!-- Glassmorphic B2B AI Chat Drawer -->
+    <div id="b2bAiDrawer" class="fixed top-0 right-0 h-full w-full sm:w-[480px] z-50 glass-panel border-l border-white/10 translate-x-full transition-transform duration-500 ease-out shadow-2xl flex flex-col overflow-hidden">
+        <!-- Chat Header -->
+        <div class="bg-motis-dark/80 p-6 border-b border-white/10 flex justify-between items-center shrink-0">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-motis-orange/10 border border-motis-orange/20 text-motis-orange rounded-full flex items-center justify-center">
+                    <span class="material-symbols-outlined text-2xl">precision_manufacturing</span>
+                </div>
+                <div>
+                    <h3 class="text-lg font-heading font-bold text-white leading-tight">Engineering Director AI</h3>
+                    <p class="text-slate-500 text-xs mt-0.5">Motis B2B Chemical Consultant</p>
+                </div>
+            </div>
+            <button onclick="toggleB2BAiDrawer(false)" class="text-slate-400 hover:text-white p-2 flex items-center justify-center">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+
+        <!-- Chat History -->
+        <div id="b2bChatHistory" class="flex-grow p-6 overflow-y-auto space-y-6 flex flex-col scrollbar-thin scrollbar-thumb-slate-800">
+            <!-- AI Welcome Message -->
+            <div class="flex space-x-3 max-w-[85%]">
+                <div class="w-8 h-8 rounded-full bg-motis-orange/10 border border-motis-orange/20 text-motis-orange flex items-center justify-center shrink-0">
+                    <span class="material-symbols-outlined text-lg">precision_manufacturing</span>
+                </div>
+                <div class="bg-slate-800/60 border border-white/5 rounded-sm p-4 text-slate-300 text-sm font-light leading-relaxed">
+                    Welcome to the **Motis B2B Technical Consultation**. 
+                    <br /><br />
+                    I am the **Technical Director AI**, engineered by Motis. I advise procurement officers and project engineers on structural waterproofing membranes, high-tensile epoxy flooring systems, hygiene compounds, and concrete admixtures.
+                    <br /><br />
+                    What industrial specifications or ASTM compliance metrics do you need compiled today?
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="p-6 bg-motis-dark/85 border-t border-white/10 shrink-0">
+            <form id="b2bChatForm" class="flex space-x-3">
+                <input class="flex-grow rounded-sm border-white/10 bg-motis-dark text-white focus:border-motis-orange focus:ring-motis-orange px-4 py-3 text-sm" placeholder="Ask B2B AI (e.g. epoxy flooring specs)..." id="b2bChatInput" required type="text" />
+                <button class="bg-motis-orange text-white p-3 rounded-sm hover:bg-motis-orange-hover transition-colors flex items-center justify-center shadow-sm" type="submit">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>

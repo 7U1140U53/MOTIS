@@ -5,11 +5,11 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 exports.handler = async (event, context) => {
-  // CORS Headers to allow CRM dashboard queries
+  // CORS Headers to allow CRM dashboard write operations
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Content-Type': 'application/json',
   };
 
@@ -22,8 +22,8 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Only accept GET requests
-  if (event.httpMethod !== 'GET') {
+  // Only accept POST requests for update operation
+  if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
       headers,
@@ -51,49 +51,70 @@ exports.handler = async (event, context) => {
     };
   }
 
-  // Extract query filters from URL
-  const queryParams = event.queryStringParameters || {};
-  const { brand, status } = queryParams;
+  // Parse incoming JSON body
+  let body;
+  try {
+    body = JSON.parse(event.body);
+  } catch (err) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ message: 'Invalid JSON request body' }),
+    };
+  }
+
+  const { leadId, status, admin_notes } = body;
+
+  // Validate required update fields
+  if (!leadId) {
+    return {
+      statusCode: 400,
+      headers,
+      body: JSON.stringify({ message: 'Validation Failed: leadId is required.' }),
+    };
+  }
 
   try {
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
-    // Initialize query
-    let query = supabase
+    // Prepare fields to update
+    const updateData = {};
+    if (status !== undefined) updateData.status = status;
+    if (admin_notes !== undefined) updateData.admin_notes = admin_notes;
+
+    // Update the record in Supabase
+    const { data: updatedLeads, error } = await supabase
       .from('leads')
-      .select('*')
-      .order('created_at', { ascending: false }); // Sort newest first!
-
-    // Apply Brand dynamic filter (supporting Unilever-style scaling)
-    if (brand && brand !== 'all') {
-      query = query.eq('brand', brand);
-    }
-
-    // Apply Status dynamic filter
-    if (status && status !== 'all') {
-      query = query.eq('status', status);
-    }
-
-    // Execute query
-    const { data: leads, error } = await query;
+      .update(updateData)
+      .eq('id', leadId)
+      .select();
 
     if (error) throw error;
+
+    if (!updatedLeads || updatedLeads.length === 0) {
+      return {
+        statusCode: 404,
+        headers,
+        body: JSON.stringify({ message: 'Lead record not found' }),
+      };
+    }
 
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         success: true,
-        leads
+        message: 'Lead updated successfully',
+        lead: updatedLeads[0]
       }),
     };
 
   } catch (error) {
-    console.error("Error retrieving leads from Supabase:", error);
+    console.error("Error updating lead record in Supabase:", error);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ message: 'Internal Server Error while retrieving leads.' }),
+      body: JSON.stringify({ message: 'Internal Server Error while updating lead.' }),
     };
   }
 };

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html class="scroll-smooth dark" lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Motis LeadFlow | Admin Dashboard</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Motis LeadFlow | Enterprise CRM Portal</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -27,129 +27,466 @@
             }
         }
     </script>
-<style>
+    <style>
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
-        /* Simple utility to hide elements */
         .hidden-section {
             display: none !important;
         }
-        
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0B0F19; }
-        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #1E293B; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #F97316; }
     </style>
 </head>
 <body class="bg-motis-dark text-motis-light antialiased font-sans h-screen overflow-hidden flex flex-col selection:bg-motis-orange selection:text-white">
 
-<!-- Top Navigation -->
-<nav class="bg-motis-dark/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center px-8 h-[72px] shrink-0">
-    <div class="text-xl font-black tracking-widest text-white uppercase font-heading flex items-center">
-        <span class="text-motis-orange mr-2">/</span> MOTIS ADMIN
-    </div>
-    <div class="flex items-center space-x-6">
-        <a href="../index.html" class="text-sm text-slate-400 hover:text-motis-orange font-medium flex items-center transition-colors">
-            <span class="material-symbols-outlined text-sm mr-1">arrow_back</span>
-            Back to Site
-        </a>
-        <button id="logoutBtn" class="hidden-section text-sm bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-sm transition-colors font-medium">
-            Log Out
-        </button>
-    </div>
-</nav>
+    <!-- Top Navigation -->
+    <nav class="bg-motis-dark/80 backdrop-blur-md border-b border-white/5 flex justify-between items-center px-8 h-[72px] shrink-0 z-30">
+        <div class="text-xl font-black tracking-widest text-white uppercase font-heading flex items-center">
+            <span class="text-motis-orange mr-2">/</span> MOTIS CRM
+            <span class="ml-3 text-[10px] uppercase tracking-widest font-semibold bg-white/5 border border-white/10 text-slate-400 px-2 py-0.5 rounded-sm">Enterprise v2.0</span>
+        </div>
+        <div class="flex items-center space-x-6">
+            <a href="../index.html" class="text-sm text-slate-400 hover:text-motis-orange font-medium flex items-center transition-colors">
+                <span class="material-symbols-outlined text-sm mr-1">arrow_back</span>
+                Public Site
+            </a>
+            <button id="logoutBtn" class="hidden-section text-sm bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 px-4 py-2 rounded-sm transition-colors font-medium">
+                Log Out
+            </button>
+        </div>
+    </nav>
 
-<!-- Main Container -->
-<main class="flex-grow relative overflow-hidden flex flex-col">
-    
-    <!-- LOGIN OVERLAY -->
-    <div id="loginSection" class="absolute inset-0 bg-motis-dark/95 backdrop-blur-md flex items-center justify-center z-20">
-        <div class="bg-motis-slate p-10 rounded-sm shadow-2xl border border-white/10 w-full max-w-md relative overflow-hidden">
-            <!-- Glow effect -->
-            <div class="absolute -top-20 -right-20 w-40 h-40 bg-motis-orange/20 blur-[60px] rounded-full"></div>
-            
-            <div class="text-center mb-8 relative z-10">
-                <div class="w-16 h-16 bg-motis-dark border border-white/5 text-motis-orange rounded-sm flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_rgba(249,115,22,0.15)]">
-                    <span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
+    <!-- Main Container -->
+    <main class="flex-grow relative overflow-hidden flex flex-row">
+        
+        <!-- LOGIN OVERLAY -->
+        <div id="loginSection" class="absolute inset-0 bg-motis-dark/95 backdrop-blur-md flex items-center justify-center z-20">
+            <div class="bg-motis-slate p-10 rounded-sm shadow-2xl border border-white/10 w-full max-w-md relative overflow-hidden">
+                <div class="absolute -top-20 -right-20 w-40 h-40 bg-motis-orange/20 blur-[60px] rounded-full"></div>
+                
+                <div class="text-center mb-8 relative z-10">
+                    <div class="w-16 h-16 bg-motis-dark border border-white/5 text-motis-orange rounded-sm flex items-center justify-center mx-auto mb-6 shadow-[0_0_15px_rgba(249,115,22,0.15)]">
+                        <span class="material-symbols-outlined text-3xl">admin_panel_settings</span>
+                    </div>
+                    <h1 class="font-heading text-3xl text-white font-bold tracking-tight">Admin Protocol</h1>
+                    <p class="text-slate-400 text-sm mt-2 font-light">Authenticate to access enterprise databases.</p>
                 </div>
-                <h1 class="font-heading text-3xl text-white font-bold tracking-tight">Admin Protocol</h1>
-                <p class="text-slate-400 text-sm mt-2 font-light">Authenticate to access lead data.</p>
+                
+                <form id="loginForm" class="space-y-6 relative z-10">
+                    <div>
+                        <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Master Authorization Key</label>
+                        <input type="password" id="passwordInput" class="w-full rounded-sm border-white/10 bg-motis-dark text-white focus:border-motis-orange focus:ring-motis-orange shadow-sm px-5 py-4 transition-colors text-center font-mono tracking-widest" placeholder="••••••••" required>
+                    </div>
+                    <div id="loginError" class="text-red-400 text-sm hidden-section text-center font-medium bg-red-400/10 border border-red-400/20 py-2 rounded-sm">Invalid Authorization Protocol.</div>
+                    <button type="submit" class="w-full bg-motis-orange text-white font-medium text-lg px-8 py-4 rounded-sm hover:bg-motis-orange-hover transition-colors shadow-lg flex items-center justify-center space-x-2">
+                        <span>Initiate Session</span>
+                        <span class="material-symbols-outlined text-sm">login</span>
+                    </button>
+                </form>
             </div>
+        </div>
+
+        <!-- DASHBOARD CONTAINER (ROLE SWITCHER SIDEBAR + VIEW AREA) -->
+        <div id="dashboardSection" class="hidden-section flex-grow flex flex-col md:flex-row overflow-hidden h-full">
             
-            <form id="loginForm" class="space-y-6 relative z-10">
+            <!-- Left-Hand Sidebar / Department Switcher -->
+            <aside class="w-full md:w-[260px] bg-slate-950 border-r border-white/5 flex flex-col shrink-0">
+                <!-- User Profile Summary -->
+                <div class="p-6 border-b border-white/5 flex items-center space-x-3 shrink-0">
+                    <div class="w-10 h-10 rounded-full bg-motis-orange text-white font-bold font-heading flex items-center justify-center shadow-lg">
+                        M
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold text-white leading-tight">Motis Staff</h4>
+                        <p class="text-slate-500 text-xs mt-0.5">Active Session</p>
+                    </div>
+                </div>
+
+                <!-- Roles Menu -->
+                <nav class="flex-grow p-4 space-y-2 overflow-y-auto">
+                    <div class="text-[10px] font-semibold text-slate-500 tracking-[0.2em] uppercase px-3 mb-2">Departments</div>
+                    
+                    <button onclick="switchRole('admin')" id="roleBtn-admin" class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-sm text-sm font-semibold transition-all bg-white/5 border border-white/10 text-white shadow-sm">
+                        <span class="material-symbols-outlined text-motis-orange">analytics</span>
+                        <span>🏢 Admin Analytics</span>
+                    </button>
+
+                    <button onclick="switchRole('sales')" id="roleBtn-sales" class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-sm text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+                        <span class="material-symbols-outlined text-slate-400">pipeline_3d</span>
+                        <span>💼 Sales & CRM</span>
+                    </button>
+
+                    <button onclick="switchRole('production')" id="roleBtn-production" class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-sm text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
+                        <span class="material-symbols-outlined text-slate-400">precision_manufacturing</span>
+                        <span>🧪 Factory Production</span>
+                    </button>
+                </nav>
+
+                <!-- Footer Status -->
+                <div class="p-4 border-t border-white/5 bg-slate-950 shrink-0 text-center">
+                    <div class="flex items-center justify-center space-x-2 text-green-500 text-xs font-semibold">
+                        <span class="relative flex h-2 w-2">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                        </span>
+                        <span>Supabase Sync Active</span>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Dynamic Portal Content Area -->
+            <section class="flex-grow flex flex-col p-8 overflow-hidden h-full relative">
+                
+                <!-- PORTAL VIEW 1: ADMIN ANALYTICS & LEADERBOARD -->
+                <div id="view-admin" class="flex-grow flex flex-col overflow-hidden space-y-8">
+                    <!-- Header -->
+                    <div class="flex justify-between items-end shrink-0">
+                        <div>
+                            <h2 class="font-heading text-4xl text-white font-bold tracking-tight mb-2">Executive Analytics</h2>
+                            <p class="text-slate-400 font-light text-lg">Cross-departmental overview and partner pipelines.</p>
+                        </div>
+                        <button onclick="fetchLeads()" class="bg-motis-slate border border-white/10 text-white px-5 py-2.5 rounded-sm hover:bg-white/5 transition-colors flex items-center shadow-sm text-sm">
+                            <span class="material-symbols-outlined text-sm mr-2">refresh</span>
+                            Sync Ledger
+                        </button>
+                    </div>
+
+                    <!-- Analytics Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 shrink-0">
+                        <div class="bg-motis-slate/50 border border-white/5 rounded-sm p-6 shadow-md relative overflow-hidden">
+                            <span class="absolute right-4 top-4 material-symbols-outlined text-slate-700 text-4xl select-none">database</span>
+                            <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider block mb-2">Total Inquiries</span>
+                            <div class="text-4xl font-heading font-black text-white" id="stat-totalLeads">0</div>
+                        </div>
+                        <div class="bg-motis-slate/50 border border-white/5 rounded-sm p-6 shadow-md relative overflow-hidden">
+                            <span class="absolute right-4 top-4 material-symbols-outlined text-slate-700 text-4xl select-none">shopping_cart</span>
+                            <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider block mb-2">Won Orders</span>
+                            <div class="text-4xl font-heading font-black text-green-400" id="stat-wonLeads">0</div>
+                        </div>
+                        <div class="bg-motis-slate/50 border border-white/5 rounded-sm p-6 shadow-md relative overflow-hidden">
+                            <span class="absolute right-4 top-4 material-symbols-outlined text-slate-700 text-4xl select-none">payments</span>
+                            <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider block mb-2">Est. Gross Value</span>
+                            <div class="text-4xl font-heading font-black text-motis-orange" id="stat-estRevenue">₦0</div>
+                        </div>
+                        <div class="bg-motis-slate/50 border border-white/5 rounded-sm p-6 shadow-md relative overflow-hidden">
+                            <span class="absolute right-4 top-4 material-symbols-outlined text-slate-700 text-4xl select-none">groups</span>
+                            <span class="text-slate-500 text-xs font-semibold uppercase tracking-wider block mb-2">Active Partners</span>
+                            <div class="text-4xl font-heading font-black text-blue-400" id="stat-activePartners">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Split Pane: Brand split & Partner Leaderboard -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow overflow-hidden">
+                        <!-- Brand Distribution -->
+                        <div class="bg-motis-slate border border-white/5 p-6 rounded-sm shadow-xl flex flex-col overflow-hidden">
+                            <h3 class="font-heading text-xl text-white font-bold mb-6 tracking-tight flex items-center">
+                                <span class="material-symbols-outlined text-sm mr-2 text-motis-orange">pie_chart</span>
+                                Brand Distribution
+                            </h3>
+                            <div class="flex-grow flex flex-col justify-center space-y-6">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="text-slate-300 font-medium">🏢 Motis Industrial Coatings</span>
+                                        <span class="text-white font-bold" id="brandPercent-industrial">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden">
+                                        <div id="brandBar-industrial" class="bg-motis-orange h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span class="text-slate-300 font-medium">🎨 More Paint (B2C & Architectural)</span>
+                                        <span class="text-white font-bold" id="brandPercent-morePaint">0%</span>
+                                    </div>
+                                    <div class="w-full bg-slate-950 h-2.5 rounded-full overflow-hidden">
+                                        <div id="brandBar-morePaint" class="bg-blue-500 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Affiliate commissions Leaderboard -->
+                        <div class="bg-motis-slate border border-white/5 p-6 rounded-sm shadow-xl flex flex-col overflow-hidden">
+                            <h3 class="font-heading text-xl text-white font-bold mb-6 tracking-tight flex items-center">
+                                <span class="material-symbols-outlined text-sm mr-2 text-motis-orange">workspace_premium</span>
+                                Partner Affiliate Leaderboard
+                            </h3>
+                            <div class="flex-grow overflow-y-auto space-y-4 pr-2" id="leaderboardContainer">
+                                <!-- Leaderboard list injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PORTAL VIEW 2: SALES CONTROL ROOM -->
+                <div id="view-sales" class="flex-grow flex flex-col overflow-hidden space-y-8 hidden-section">
+                    <!-- Header -->
+                    <div class="flex justify-between items-end shrink-0">
+                        <div>
+                            <h2 class="font-heading text-4xl text-white font-bold tracking-tight mb-2">Sales Control</h2>
+                            <p class="text-slate-400 font-light text-lg">Follow up on customer estimations and convert bids.</p>
+                        </div>
+                        <div class="flex space-x-3">
+                            <button onclick="fetchLeads()" class="bg-motis-slate border border-white/10 text-white px-5 py-2.5 rounded-sm hover:bg-white/5 transition-colors flex items-center shadow-sm text-sm">
+                                <span class="material-symbols-outlined text-sm mr-2">refresh</span>
+                                Sync
+                            </button>
+                            <button id="exportCsvBtn" class="bg-motis-orange hover:bg-motis-orange-hover text-white px-5 py-2.5 rounded-sm transition-colors flex items-center shadow-sm text-sm">
+                                <span class="material-symbols-outlined text-sm mr-2">download</span>
+                                Export Ledger
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Lead Table Container -->
+                    <div class="bg-motis-slate rounded-sm shadow-xl border border-white/5 flex-grow overflow-hidden flex flex-col relative">
+                        <div class="overflow-x-auto overflow-y-auto h-full">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-slate-950 sticky top-0 z-10">
+                                    <tr>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Date</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Client</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Brand</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Product Protocol</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Status</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5 text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="salesTableBody" class="divide-y divide-white/5 text-sm text-slate-300">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                            
+                            <!-- Loading/Empty placeholders -->
+                            <div id="salesLoadingState" class="hidden-section flex flex-col items-center justify-center p-20 text-slate-400">
+                                <span class="material-symbols-outlined text-4xl animate-spin mb-4 text-motis-orange">hourglass_empty</span>
+                                <p class="tracking-widest uppercase text-sm font-semibold">Decrypting Ledger...</p>
+                            </div>
+                            <div id="salesEmptyState" class="hidden-section flex flex-col items-center justify-center p-20 text-slate-400">
+                                <span class="material-symbols-outlined text-4xl text-slate-600 mb-4">inbox</span>
+                                <p class="tracking-widest uppercase text-sm font-semibold">Ledger Empty</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PORTAL VIEW 3: CHEMICAL PRODUCTION FLOOR -->
+                <div id="view-production" class="flex-grow flex flex-col overflow-hidden space-y-8 hidden-section">
+                    <!-- Header -->
+                    <div class="flex justify-between items-end shrink-0">
+                        <div>
+                            <h2 class="font-heading text-4xl text-white font-bold tracking-tight mb-2">Chemical Production Floor</h2>
+                            <p class="text-slate-400 font-light text-lg">Active formulation orders, chemical workslips, and batch specs.</p>
+                        </div>
+                        <button onclick="fetchLeads()" class="bg-motis-slate border border-white/10 text-white px-5 py-2.5 rounded-sm hover:bg-white/5 transition-colors flex items-center shadow-sm text-sm">
+                            <span class="material-symbols-outlined text-sm mr-2">refresh</span>
+                            Sync Schedules
+                        </button>
+                    </div>
+
+                    <!-- Formulation List Grid -->
+                    <div class="bg-motis-slate rounded-sm shadow-xl border border-white/5 flex-grow overflow-hidden flex flex-col relative">
+                        <div class="overflow-x-auto overflow-y-auto h-full">
+                            <table class="w-full text-left border-collapse">
+                                <thead class="bg-slate-950 sticky top-0 z-10">
+                                    <tr>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Order ID</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Product Base</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Batch Size</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Delivery Location</th>
+                                        <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5 text-right">Production Specs</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productionTableBody" class="divide-y divide-white/5 text-sm text-slate-300">
+                                    <!-- Injected dynamically -->
+                                </tbody>
+                            </table>
+                            <div id="productionEmptyState" class="hidden-section flex flex-col items-center justify-center p-20 text-slate-400">
+                                <span class="material-symbols-outlined text-4xl text-slate-600 mb-4">biotech</span>
+                                <p class="tracking-widest uppercase text-sm font-semibold">No active formulations scheduled.</p>
+                                <p class="text-xs text-slate-500 mt-1">Mark leads as "Won" in Sales to trigger a factory workslip.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <!-- LEAD SPECIFICATIONS & AI CO-PILOT DETAILED MODAL -->
+    <div id="leadModal" class="fixed inset-0 z-40 bg-motis-dark/90 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-motis-slate border border-white/10 w-full max-w-4xl rounded-sm shadow-2xl relative overflow-hidden flex flex-col max-h-[85vh]">
+            <!-- Header -->
+            <div class="p-6 border-b border-white/5 bg-slate-950 flex justify-between items-center shrink-0">
+                <h3 class="font-heading text-2xl text-white font-bold tracking-tight">Bid Specifications Protocol</h3>
+                <button onclick="closeLeadModal()" class="text-slate-400 hover:text-white p-2">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Content Split Pane -->
+            <div class="flex-grow overflow-y-auto p-8 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Left: Lead Detail specs -->
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Customer Identification</span>
+                        <div class="text-white font-bold text-lg" id="modal-name">Name</div>
+                        <div class="text-slate-400 text-sm mt-1" id="modal-phone">Phone</div>
+                        <div class="text-slate-400 text-sm" id="modal-email">Email</div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Brand Division</span>
+                            <span class="inline-flex px-3 py-1 rounded-sm text-xs font-semibold" id="modal-brand">Brand</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-1">Deploy Site</span>
+                            <span class="text-slate-300 text-sm font-semibold" id="modal-location">Location</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-white/5 pt-4">
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-2">Requested Product line</span>
+                        <div class="text-white font-semibold text-sm" id="modal-productLine">Product Line</div>
+                        <div class="text-slate-400 text-xs mt-1" id="modal-quantity">Quantity: N/A</div>
+                    </div>
+
+                    <div class="bg-slate-950 border border-white/5 p-4 rounded-sm">
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-2">Customer Message / Room Specs</span>
+                        <p class="text-slate-300 text-sm font-light leading-relaxed whitespace-pre-line" id="modal-message">Message</p>
+                    </div>
+
+                    <div class="border-t border-white/5 pt-4 space-y-4">
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block">Status Control</span>
+                        <div class="flex gap-3">
+                            <select id="modal-statusSelect" class="bg-motis-dark text-white border-white/10 rounded-sm py-2 px-3 text-sm focus:border-motis-orange focus:ring-motis-orange flex-grow">
+                                <option value="pending">Pending</option>
+                                <option value="contacted">Contacted</option>
+                                <option value="won">Won (Send to Factory)</option>
+                                <option value="lost">Lost</option>
+                            </select>
+                            <button id="saveStatusBtn" class="bg-motis-orange hover:bg-motis-orange-hover text-white text-xs font-bold px-4 py-2 rounded-sm transition-all uppercase tracking-wide">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: AI Co-Pilot Response Generator -->
+                <div class="border-l border-white/5 pl-0 lg:pl-8 flex flex-col space-y-6">
+                    <div>
+                        <div class="flex items-center space-x-2 text-motis-orange mb-2">
+                            <span class="material-symbols-outlined">psychology</span>
+                            <span class="text-[10px] font-semibold tracking-widest uppercase">AI Co-Pilot Assistant</span>
+                        </div>
+                        <h4 class="text-white font-bold font-heading text-lg">Deploy Follow-up Bid Draft</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed mt-1">Generates customized, professionally structured follow-up quotes for sales staff to send in one-click.</p>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="generateCoPilotDraft('whatsapp')" class="flex-grow bg-green-700/20 hover:bg-green-700/40 border border-green-700/30 text-green-400 text-xs font-semibold py-3 px-4 rounded-sm flex items-center justify-center space-x-2 transition-all">
+                            <span class="material-symbols-outlined text-base">chat</span>
+                            <span>Draft for WhatsApp</span>
+                        </button>
+                        <button onclick="generateCoPilotDraft('email')" class="flex-grow bg-blue-700/20 hover:bg-blue-700/40 border border-blue-700/30 text-blue-400 text-xs font-semibold py-3 px-4 rounded-sm flex items-center justify-center space-x-2 transition-all">
+                            <span class="material-symbols-outlined text-base">mail</span>
+                            <span>Draft for Email</span>
+                        </button>
+                    </div>
+
+                    <div class="bg-slate-950 border border-white/5 rounded-sm p-4 flex-grow flex flex-col relative min-h-[220px]">
+                        <span class="text-[10px] font-semibold tracking-wider text-slate-500 uppercase block mb-2">Live AI Co-Pilot Output</span>
+                        <textarea id="copilotDraftArea" class="flex-grow bg-transparent text-slate-300 text-sm font-light leading-relaxed resize-none border-none outline-none focus:ring-0 focus:outline-none w-full" placeholder="Click a generator button above to compile standard quote drafts..."></textarea>
+                        
+                        <!-- Floating Copilot Action -->
+                        <div class="pt-3 border-t border-white/5 flex justify-end">
+                            <button id="copyDraftBtn" class="bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 text-xs px-3 py-1.5 rounded-sm flex items-center space-x-1.5 transition-colors">
+                                <span class="material-symbols-outlined text-sm">content_copy</span>
+                                <span>Copy Draft</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHEMICAL FACTORY WORKSLIP MODAL (FACTORY FLOOR ONLY) -->
+    <div id="workslipModal" class="fixed inset-0 z-40 bg-motis-dark/95 backdrop-blur-md flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white text-slate-900 border border-slate-300 w-full max-w-2xl rounded-sm shadow-2xl relative overflow-hidden flex flex-col p-10 font-mono text-sm max-h-[90vh]">
+            
+            <div class="border-b-4 border-slate-900 pb-6 mb-6 flex justify-between items-start">
                 <div>
-                    <label class="block text-xs uppercase tracking-widest font-semibold text-slate-400 mb-3">Master Password</label>
-                    <input type="password" id="passwordInput" class="w-full rounded-sm border-white/10 bg-motis-dark text-white focus:border-motis-orange focus:ring-motis-orange shadow-sm px-5 py-4 transition-colors" placeholder="••••••••" required>
+                    <h2 class="text-xl font-bold tracking-widest uppercase">MOTIS INDUSTRIES LTD.</h2>
+                    <h3 class="text-xs uppercase font-bold tracking-wider text-slate-600">Chemical Manufacturing Division</h3>
+                    <p class="text-xs text-slate-500 mt-1">Lagos, Nigeria</p>
                 </div>
-                <div id="loginError" class="text-red-400 text-sm hidden-section text-center font-medium bg-red-400/10 border border-red-400/20 py-2 rounded-sm">Authentication Failed.</div>
-                <button type="submit" class="w-full bg-motis-orange text-white font-medium text-lg px-8 py-4 rounded-sm hover:bg-motis-orange-hover transition-colors shadow-lg flex items-center justify-center space-x-2">
-                    <span>Initiate Login</span>
-                    <span class="material-symbols-outlined text-sm">login</span>
-                </button>
-            </form>
-        </div>
-    </div>
-
-    <!-- DASHBOARD VIEW -->
-    <div id="dashboardSection" class="hidden-section flex-grow flex flex-col p-8 overflow-hidden h-full">
-        <!-- Dashboard Header -->
-        <div class="flex justify-between items-end mb-8 shrink-0">
-            <div>
-                <h2 class="font-heading text-4xl text-white font-bold tracking-tight mb-2">Lead Flow Control</h2>
-                <p class="text-slate-400 font-light text-lg">Manage and deploy customer quote requests.</p>
+                <div class="text-right">
+                    <span class="bg-slate-900 text-white font-bold text-xs uppercase px-3 py-1 tracking-widest inline-block">FACTORY WORKSUP</span>
+                    <p class="text-xs font-bold mt-2" id="workslip-id">BATCH-#0000</p>
+                </div>
             </div>
-            <div class="flex space-x-3">
-                <button id="refreshBtn" class="bg-motis-slate border border-white/10 text-white px-5 py-2.5 rounded-sm hover:bg-white/5 transition-colors flex items-center shadow-sm">
-                    <span class="material-symbols-outlined text-sm mr-2">refresh</span>
-                    Refresh
-                </button>
-                <button id="exportCsvBtn" class="bg-motis-orange text-white px-5 py-2.5 rounded-sm hover:bg-motis-orange-hover transition-colors flex items-center shadow-sm">
-                    <span class="material-symbols-outlined text-sm mr-2">download</span>
-                    Export CSV
-                </button>
-            </div>
-        </div>
 
-        <!-- Table Container -->
-        <div class="bg-motis-slate rounded-sm shadow-xl border border-white/5 flex-grow overflow-hidden flex flex-col relative">
-            <div class="overflow-x-auto overflow-y-auto h-full">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-motis-dark sticky top-0 z-10">
+            <!-- Client Info Grid -->
+            <div class="grid grid-cols-2 gap-6 border-b border-slate-300 pb-6 mb-6">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Assigned Client</span>
+                    <div class="font-bold text-base text-slate-900" id="workslip-client">John Doe</div>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Delivery Destination</span>
+                    <div class="font-bold text-slate-900" id="workslip-location">Lagos Island, Nigeria</div>
+                </div>
+            </div>
+
+            <!-- Product Specs -->
+            <div class="border-b border-slate-300 pb-6 mb-6 grid grid-cols-2 gap-6">
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Target Formulation Base</span>
+                    <div class="font-bold text-slate-900" id="workslip-product">Premium Silk Base</div>
+                </div>
+                <div>
+                    <span class="text-xs font-bold text-slate-500 uppercase block mb-1">Execution Volume</span>
+                    <div class="font-bold text-slate-900" id="workslip-volume">100 Drums (2000L)</div>
+                </div>
+            </div>
+
+            <!-- Master Chemical Formula Table -->
+            <div class="flex-grow overflow-y-auto mb-6">
+                <span class="text-xs font-bold text-slate-500 uppercase block mb-3">Dispersion Room Blending Ratio</span>
+                <table class="w-full text-left border border-slate-300">
+                    <thead class="bg-slate-100 border-b border-slate-300">
                         <tr>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Date</th>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Name</th>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Contact</th>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Location</th>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Product Line</th>
-                            <th class="px-6 py-5 text-xs font-semibold text-slate-400 uppercase tracking-widest border-b border-white/5">Message</th>
+                            <th class="p-2 font-bold text-slate-700">Raw Constituent</th>
+                            <th class="p-2 font-bold text-slate-700">Ratio %</th>
+                            <th class="p-2 font-bold text-slate-700 text-right">Required Volume</th>
                         </tr>
                     </thead>
-                    <tbody id="leadsTableBody" class="divide-y divide-white/5 text-sm text-slate-300">
-                        <!-- Leads will be injected here via JavaScript -->
+                    <tbody id="workslipFormulaBody" class="divide-y divide-slate-200">
+                        <!-- Calculated constituents based on volume -->
                     </tbody>
                 </table>
-                
-                <!-- Loading State -->
-                <div id="loadingState" class="hidden-section flex flex-col items-center justify-center p-20 text-slate-400">
-                    <span class="material-symbols-outlined text-4xl animate-spin mb-4 text-motis-orange">hourglass_empty</span>
-                    <p class="tracking-widest uppercase text-sm font-semibold">Fetching Data...</p>
-                </div>
+            </div>
 
-                <!-- Empty State -->
-                <div id="emptyState" class="hidden-section flex flex-col items-center justify-center p-20 text-slate-400">
-                    <div class="w-20 h-20 bg-motis-dark border border-white/5 rounded-full flex items-center justify-center mb-6">
-                        <span class="material-symbols-outlined text-4xl text-slate-600">inbox</span>
-                    </div>
-                    <h3 class="text-xl font-heading text-white mb-2 tracking-tight">No Active Leads</h3>
-                    <p class="font-light">Deployed quote requests will populate here.</p>
-                </div>
+            <!-- Footer print action -->
+            <div class="border-t border-slate-300 pt-6 flex justify-between items-center shrink-0">
+                <button onclick="closeWorkslipModal()" class="text-slate-500 hover:text-slate-950 font-bold border border-slate-300 hover:bg-slate-50 px-5 py-2.5 rounded-sm">
+                    Dismiss Ticket
+                </button>
+                <button onclick="window.print()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-2.5 rounded-sm flex items-center space-x-2">
+                    <span class="material-symbols-outlined text-sm">print</span>
+                    <span>Print Workslip</span>
+                </button>
             </div>
         </div>
     </div>
-</main>
 
-<script src="dashboard.js"></script>
+    <script src="dashboard.js"></script>
 </body>
 </html>
