@@ -4,9 +4,21 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Motis LeadFlow | Enterprise CRM Portal</title>
+    <script>
+        // Suppress Tailwind Play CDN warning in console
+        (function() {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args[0] && typeof args[0] === 'string' && args[0].includes('cdn.tailwindcss.com')) {
+                    return;
+                }
+                originalWarn.apply(console, args);
+            };
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=block" rel="stylesheet"/>
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -116,7 +128,7 @@
                     </button>
 
                     <button onclick="switchRole('sales')" id="roleBtn-sales" class="w-full text-left flex items-center space-x-3 px-4 py-3 rounded-sm text-sm font-medium transition-all text-slate-400 hover:text-white hover:bg-white/5 border border-transparent">
-                        <span class="material-symbols-outlined text-slate-400">pipeline_3d</span>
+                        <span class="material-symbols-outlined text-slate-400">insights</span>
                         <span>💼 Sales & CRM</span>
                     </button>
 
