@@ -1,0 +1,9 @@
+# Netlify Configuration File
+# Instructs Netlify where to find our static files and backend serverless functions
+
+[build]
+  # The folder containing our HTML, CSS, JS frontend assets
+  publish = "public"
+
+  # The folder containing our serverless functions (endpoints)
+  functions = "functions"
