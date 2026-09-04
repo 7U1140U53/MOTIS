@@ -1,34 +1,34 @@
 const { createClient } = require("@supabase/supabase-js");
 
 // Initialize Supabase Client
-// SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY are set securely in Netlify
+// SUPABASE_URL and SUPABASE_SECRET_KEY are set securely in Netlify
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
 
 exports.handler = async (event, context) => {
   // Setup CORS headers to allow modern frontend AJAX requests
   const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Content-Type': 'application/json',
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
   };
 
   // Handle preflight CORS request
-  if (event.httpMethod === 'OPTIONS') {
+  if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ message: 'CORS Preflight Success' }),
+      body: JSON.stringify({ message: "CORS Preflight Success" }),
     };
   }
 
   // Only accept POST requests
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
       headers,
-      body: JSON.stringify({ message: 'Method Not Allowed' }),
+      body: JSON.stringify({ message: "Method Not Allowed" }),
     };
   }
 
@@ -40,22 +40,22 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 400,
       headers,
-      body: JSON.stringify({ message: 'Invalid JSON request body' }),
+      body: JSON.stringify({ message: "Invalid JSON request body" }),
     };
   }
 
   // Destructure incoming lead payload
-  const { 
-    name, 
-    phone, 
-    email, 
-    location, 
-    product_line, 
-    quantity, 
-    message, 
-    brand, 
-    referrer_id, 
-    ai_estimation 
+  const {
+    name,
+    phone,
+    email,
+    location,
+    product_line,
+    quantity,
+    message,
+    brand,
+    referrer_id,
+    ai_estimation,
   } = body;
 
   // Validate required fields (following our strict PRD specification)
@@ -63,27 +63,34 @@ exports.handler = async (event, context) => {
     return {
       statusCode: 400,
       headers,
-      body: JSON.stringify({ message: 'Validation Failed: name, phone, location, product_line, and message are required.' }),
+      body: JSON.stringify({
+        message:
+          "Validation Failed: name, phone, location, product_line, and message are required.",
+      }),
     };
   }
 
   // Check database configuration
-  if (!supabaseUrl || !supabaseServiceKey) {
-    console.error("Configuration Error: Supabase credentials missing in Environment Variables!");
+  if (!supabaseUrl || !supabaseSecretKey) {
+    console.error(
+      "Configuration Error: Supabase credentials missing in Environment Variables!",
+    );
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ message: 'Server database configuration is missing.' }),
+      body: JSON.stringify({
+        message: "Server database configuration is missing.",
+      }),
     };
   }
 
   try {
     // Create Supabase Client with service key to securely bypass RLS policies
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+    const supabase = createClient(supabaseUrl, supabaseSecretKey);
 
     // Insert lead into Supabase PostgreSQL database
     const { data, error } = await supabase
-      .from('leads')
+      .from("leads")
       .insert([
         {
           name: name.trim(),
@@ -93,11 +100,11 @@ exports.handler = async (event, context) => {
           product_line: product_line.trim(),
           quantity: quantity ? quantity.trim() : null,
           message: message.trim(),
-          brand: brand ? brand.trim() : 'motis_industrial',
+          brand: brand ? brand.trim() : "motis_industrial",
           referrer_id: referrer_id ? referrer_id.trim() : null,
           ai_estimation: ai_estimation || null,
-          status: 'New'
-        }
+          status: "New",
+        },
       ])
       .select();
 
@@ -109,17 +116,18 @@ exports.handler = async (event, context) => {
       headers,
       body: JSON.stringify({
         success: true,
-        message: 'Lead captured successfully',
-        lead: data[0]
+        message: "Lead captured successfully",
+        lead: data[0],
       }),
     };
-
   } catch (error) {
     console.error("Error writing lead record to Supabase:", error);
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ message: 'Internal Server Error while saving lead.' }),
+      body: JSON.stringify({
+        message: "Internal Server Error while saving lead.",
+      }),
     };
   }
 };
