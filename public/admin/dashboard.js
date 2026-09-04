@@ -450,7 +450,10 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("/.netlify/functions/updateLead", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer MOTIS_ADMIN_123",
+        },
         body: JSON.stringify({
           leadId: selectedLead.id,
           status: targetStatus,
