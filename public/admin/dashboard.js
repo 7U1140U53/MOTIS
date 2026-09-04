@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({
           leadId: selectedLead.id,
           status: targetStatus,
-          notes: `Status updated to ${targetStatus} via Enterprise CRM.`,
+          admin_notes: `Status updated to ${targetStatus} via Enterprise CRM.`,
         }),
       });
 
