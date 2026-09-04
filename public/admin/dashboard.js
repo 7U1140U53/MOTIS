@@ -423,7 +423,12 @@ document.addEventListener("DOMContentLoaded", () => {
         ? "inline-flex px-3 py-1 rounded-sm text-xs font-semibold bg-blue-500/10 border border-blue-500/20 text-blue-400"
         : "inline-flex px-3 py-1 rounded-sm text-xs font-semibold bg-motis-orange/10 border border-motis-orange/20 text-motis-orange";
 
-    modalStatusSelect.value = selectedLead.status || "pending";
+    const normalizedStatus = String(
+      selectedLead.status || "pending",
+    ).toLowerCase();
+
+    modalStatusSelect.value =
+      normalizedStatus === "new" ? "pending" : normalizedStatus;
 
     // Display Modal
     leadModal.classList.remove("opacity-0", "pointer-events-none");
