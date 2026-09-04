@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          id: selectedLead.id,
+          leadId: selectedLead.id,
           status: targetStatus,
           notes: `Status updated to ${targetStatus} via Enterprise CRM.`,
         }),
